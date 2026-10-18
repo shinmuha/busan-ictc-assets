@@ -1,0 +1,78 @@
+{
+  "room": "통제실",
+  "types": 9,
+  "items": 26,
+  "reference": "부산 ICTC 소방청 국가자산 물품 신태선관리용(20261015).xlsx",
+  "groups": [
+    {
+      "name": "행정용 모니터",
+      "count": 9,
+      "href": "통제실_행정용 모니터_개체현황.html"
+    },
+    {
+      "name": "PC(워크스테이션)",
+      "count": 4,
+      "href": "통제실_PC(워크스테이션)_개체현황.html"
+    },
+    {
+      "name": "작업용의자",
+      "count": 3,
+      "href": "통제실_작업용의자_개체현황.html"
+    },
+    {
+      "name": "마이크",
+      "count": 2,
+      "href": "통제실_마이크_개체현황.html"
+    },
+    {
+      "name": "스피커",
+      "count": 2,
+      "href": "통제실_스피커_개체현황.html"
+    },
+    {
+      "name": "이동식부스(훈련부스)",
+      "count": 2,
+      "href": "통제실_이동식부스(훈련부스)_개체현황.html"
+    },
+    {
+      "name": "카운터",
+      "count": 2,
+      "href": "통제실_카운터_개체현황.html"
+    },
+    {
+      "name": "소파",
+      "count": 1,
+      "href": "통제실_소파_개체현황.html"
+    },
+    {
+      "name": "수강용탁자",
+      "count": 1,
+      "href": "통제실_수강용탁자_개체현황.html"
+    }
+  ],
+  "noted_records": [
+    "ICTC-0003",
+    "ICTC-0004",
+    "ICTC-0005",
+    "ICTC-0006",
+    "ICTC-0007",
+    "ICTC-0008",
+    "ICTC-0009",
+    "ICTC-0010",
+    "ICTC-0011",
+    "ICTC-0091",
+    "ICTC-0092",
+    "ICTC-0093",
+    "ICTC-0094",
+    "ICTC-0235",
+    "ICTC-0236",
+    "ICTC-0237",
+    "ICTC-0103",
+    "ICTC-0104",
+    "ICTC-0158",
+    "ICTC-0159",
+    "ICTC-0221",
+    "ICTC-0222",
+    "ICTC-0135"
+  ]
+}

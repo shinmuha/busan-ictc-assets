@@ -1,0 +1,42 @@
+{
+  "room": "디브리핑실",
+  "place_in_ledger": "1층 디브리핑실",
+  "types": 3,
+  "items": 4,
+  "reference": "부산 ICTC 소방청 국가자산 물품 신태선관리용(20261015).xlsx",
+  "groups": [
+    {
+      "name": "대형 액정모니터",
+      "count": 2,
+      "href": "디브리핑실_대형 액정모니터_개체현황.html"
+    },
+    {
+      "name": "PC(워크스테이션)",
+      "count": 1,
+      "href": "디브리핑실_PC(워크스테이션)_개체현황.html"
+    },
+    {
+      "name": "컴퓨터 운용 책상",
+      "count": 1,
+      "href": "디브리핑실_컴퓨터 운용 책상_개체현황.html"
+    }
+  ],
+  "non_text_raw_notes": [
+    {
+      "id": "ICTC-0306",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0307",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0305",
+      "note": "4939"
+    }
+  ],
+  "noted_records": [
+    "ICTC-0068"
+  ],
+  "missing_dates": []
+}

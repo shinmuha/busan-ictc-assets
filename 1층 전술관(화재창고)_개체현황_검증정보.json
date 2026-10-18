@@ -1,0 +1,13 @@
+{
+  "space": "1층 전술관(화재창고)",
+  "original_location": "전술관 1층 화재장비창고",
+  "count": 1,
+  "type": "테이블(연결형)",
+  "asset_id": "ICTC-0352",
+  "asset_kkr": "KKR-PA-24235081-00000008",
+  "secondary_id": "103231100103940484",
+  "duplicate": "강사대기실 ICTC-0349 KKR 동일/하단 자산번호 다른 개체",
+  "photo": "물품 대표사진, 현장 실물 사진 여부 미확인",
+  "top_space_image": "미사용",
+  "source": "부산 ICTC 소방청 국가자산 물품 신태선관리용(20261015).xlsx, 개체별 물품정보 행 356"
+}

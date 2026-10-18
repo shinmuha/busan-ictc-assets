@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#081d2c" name="theme-color"/>
+<title>공간별 현황 | 부산 ICTC 소방청 국가자산</title>
+<style>
+:root{color-scheme:dark;--navy:#081d2c}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--navy);font-family:"Noto Sans KR","Malgun Gothic",sans-serif}
+.stage{position:relative;width:min(100%,1672px);margin:0 auto;aspect-ratio:1672/941;isolation:isolate;line-height:0}
+/* This is the exact, unchanged visual the user approved. All design, reflections and typography are in the original PNG. */
+.approved-image{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.label-target{position:absolute;display:block;z-index:2;border-radius:8px;outline:none;cursor:pointer}
+.label-target:hover{background-color:rgba(205,232,248,.055)}
+.label-target:focus-visible{outline:3px solid #f64c61;outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.mobile-nav{display:none}
+@media(max-width:700px){
+ .mobile-nav{display:block;margin:16px auto 32px;width:min(100% - 32px,600px);color:#ecf5fc;line-height:1.5}
+ .mobile-nav h2{font-size:17px;margin:0 0 10px;font-weight:700}
+ .mobile-nav .links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .mobile-nav a{display:flex;gap:7px;align-items:center;justify-content:space-between;color:#ebf5ff;background:#112f42;border:1px solid #385a71;padding:11px 12px;min-height:48px;border-radius:5px;text-decoration:none;font-size:13px}
+ .mobile-nav a:focus-visible{outline:2px solid #ff667a;outline-offset:2px}
+}
+
+/* 텍스트 전용 보정 레이어 — 기존 1672x941 승인 PNG는 절대 수정하지 않음 */
+.stage .overlay-label{
+  display:flex;align-items:center;justify-content:space-between;gap:5px;
+  line-height:1.35;white-space:nowrap;text-decoration:none;overflow:hidden;
+  color:#f1f8fd;
+  background:linear-gradient(176deg,#0b2b43 0%,#082239 55%,#061b30 100%);
+  border:1px solid rgba(116,183,225,.74);
+  border-radius:8px;
+  box-shadow:inset 0 0 0 1px rgba(6,15,31,.31),0 2px 15px rgba(0,0,0,.20);
+  padding:0 13px 1px 16px;
+  backdrop-filter:none;
+  -webkit-font-smoothing:antialiased;
+  font-size:21px;font-weight:700;letter-spacing:-.02em;
+}
+.stage .overlay-label .visible-name{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;line-height:1.38;padding-block:2px;font-family:"Malgun Gothic","Noto Sans CJK KR","NanumGothic",sans-serif;}
+.stage .overlay-label .visible-arrow{flex:none;font-family:Arial,sans-serif;font-size:27px;font-weight:400;color:#d3e7f6;line-height:.9;}
+.stage .overlay-label.menu{border-color:rgba(88,156,206,.72);font-size:20px;font-weight:700;padding:0 18px 0 17px;background:linear-gradient(155deg,#08263d 0%,#071f34 65%,#071e32 100%);}
+.stage .overlay-label.menu .visible-arrow{font-size:30px;font-weight:200;line-height:0.85;}
+.stage .overlay-label[data-display-name="긴급구조통제단실"]{font-size:19px;padding-left:15px;padding-right:10px;}
+.stage .overlay-label[data-display-name="2층 전술관(소방시설)"],
+.stage .overlay-label[data-display-name="1층 전술관(화재창고)"]{font-size:19px;letter-spacing:-.02em;}
+.stage .overlay-label[data-display-name="4층 강사대기실"]{font-size:20px;}
+.stage .overlay-label:hover{background:linear-gradient(176deg,#123b59 0%,#0b2c45 100%);border-color:rgba(188,230,252,.95);}
+.stage .overlay-label:focus-visible{outline:3px solid #fb6176;outline-offset:3px;}
+/* The image and its overlaid labels scale together at narrower viewport sizes. */
+@media(max-width:1671px){
+  .stage .overlay-label{font-size:clamp(6px,1.256vw,21px);padding-left:0.96%;padding-right:0.78%;border-radius:0.48vw;}
+  .stage .overlay-label.menu{font-size:clamp(6px,1.2vw,20px);padding-left:1.02%;padding-right:1.05%;}
+  .stage .overlay-label[data-display-name="긴급구조통제단실"],
+  .stage .overlay-label[data-display-name="2층 전술관(소방시설)"],
+  .stage .overlay-label[data-display-name="1층 전술관(화재창고)"]{font-size:clamp(6px,1.14vw,19px);}
+  .stage .overlay-label .visible-arrow{font-size:clamp(7px,1.62vw,27px)}
+  .stage .overlay-label.menu .visible-arrow{font-size:clamp(7px,1.8vw,30px)}
+}
+</style>
+</head>
+<body>
+<main aria-label="공간별 현황">
+<div class="stage">
+<img alt="부산 ICTC 공간별 현황 승인 화면. 5개 목록 공간과 평가관실, 긴급구조통제단실, 시스템관리실, 사무실, 디브리핑실, A훈련실, B훈련실 및 통제실을 연결하는 이미지형 공간 안내도." class="approved-image" height="941" loading="eager" src="assets/공간별_승인화면_원본.png" width="1672"/>
+<a aria-label="홈으로 조회" class="label-target" href="index.html" style="left:92.523923%;top:1.806589%;width:3.947368%;height:8.607864%" title="홈으로"><span class="sr-only">홈으로</span></a>
+<a aria-label="수영장 조회" class="label-target overlay-label menu" data-display-name="수영장" href="공간별_상세.html?room=pool" style="left:3.229665%;top:28.267800%;width:17.045455%;height:6.695005%" title="수영장"><span class="visible-name">수영장</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="1층 본관동 조회" class="label-target overlay-label menu" data-display-name="1층 본관동" href="공간별_상세.html?room=main" style="left:3.229665%;top:35.387885%;width:17.045455%;height:6.801275%" title="1층 본관동"><span class="visible-name">1층 본관동</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="4층 강사대기실 조회" class="label-target overlay-label menu" data-display-name="4층 강사대기실" href="공간별_상세.html?room=teachers" style="left:3.229665%;top:42.507970%;width:17.045455%;height:6.801275%" title="4층 강사대기실"><span class="visible-name">4층 강사대기실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="2층 전술관(소방시설) 조회" class="label-target overlay-label menu" data-display-name="2층 전술관(소방시설)" href="공간별_상세.html?room=fire" style="left:3.229665%;top:49.628055%;width:17.045455%;height:6.907545%" title="2층 전술관(소방시설)"><span class="visible-name">2층 전술관(소방시설)</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="1층 전술관(화재창고) 조회" class="label-target overlay-label menu" data-display-name="1층 전술관(화재창고)" href="공간별_상세.html?room=storage" style="left:3.229665%;top:56.854410%;width:17.045455%;height:6.907545%" title="1층 전술관(화재창고)"><span class="visible-name">1층 전술관(화재창고)</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="평가관실 조회" class="label-target overlay-label main" data-display-name="평가관실" href="공간별_상세.html?room=eval" style="left:27.332536%;top:10.201913%;width:11.184211%;height:5.951116%" title="평가관실"><span class="visible-name">평가관실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="긴급구조통제단실 조회" class="label-target overlay-label main" data-display-name="긴급구조통제단실" href="공간별_상세.html?room=emerg" style="left:66.387560%;top:9.351753%;width:14.952153%;height:5.951116%" title="긴급구조통제단실"><span class="visible-name">긴급구조통제단실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="시스템관리실 조회" class="label-target overlay-label main" data-display-name="시스템관리실" href="공간별_상세.html?room=rack" style="left:47.308612%;top:34.218916%;width:12.081340%;height:6.057386%" title="시스템관리실"><span class="visible-name">시스템관리실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="사무실 조회" class="label-target overlay-label main" data-display-name="사무실" href="공간별_상세.html?room=office" style="left:7.117225%;top:67.800213%;width:8.612440%;height:7.120085%" title="사무실"><span class="visible-name">사무실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="디브리핑실 조회" class="label-target overlay-label main" data-display-name="디브리핑실" href="공간별_상세.html?room=debrief" style="left:38.815789%;top:64.080765%;width:11.244019%;height:6.482465%" title="디브리핑실"><span class="visible-name">디브리핑실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="통제실 조회" class="label-target overlay-label main" data-display-name="통제실" href="공간별_상세.html?room=control" style="left:75.239234%;top:37.725824%;width:9.928230%;height:6.269926%" title="통제실"><span class="visible-name">통제실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="B훈련실 조회" class="label-target overlay-label main" data-display-name="B훈련실" data-original-position="A훈련실" href="공간별_상세.html?room=b" style="left:67.045455%;top:82.465462%;width:9.090909%;height:5.844846%" title="B훈련실"><span class="visible-name">B훈련실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+<a aria-label="A훈련실 조회" class="label-target overlay-label main" data-display-name="A훈련실" data-original-position="B훈련실" href="공간별_상세.html?room=a" style="left:88.098086%;top:81.615303%;width:8.971292%;height:5.951116%" title="A훈련실"><span class="visible-name">A훈련실</span><span aria-hidden="true" class="visible-arrow">›</span></a>
+</div>
+<nav aria-label="모바일 공간 선택" class="mobile-nav"><h2>공간 선택</h2><div class="links">
+<a href="공간별_상세.html?room=pool">수영장 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=main">1층 본관동 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=teachers">4층 강사대기실 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=fire">2층 전술관(소방시설) <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=storage">1층 전술관(화재창고) <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=eval">평가관실 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=emerg">긴급구조통제단실 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=rack">시스템관리실 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=office">사무실 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=debrief">디브리핑실 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=control">통제실 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=b">B훈련실 <span aria-hidden="true">›</span></a>
+<a href="공간별_상세.html?room=a">A훈련실 <span aria-hidden="true">›</span></a>
+</div></nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>4층 평가관실 · 대형 액정모니터 · 부산 ICTC</title><style>
+:root{--navy:#081d2c;--ink:#edf5fa;--muted:#b3c9d7;--border:rgba(174,204,225,.22);--red:#e83f54}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--navy);color:var(--ink);font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;letter-spacing:-.042em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20),rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),linear-gradient(180deg,#102031,#0a1b29 45%,#081d2c);background-size:auto,64px 64px,64px 64px,auto}
+body::after{content:"";position:fixed;inset:auto 0 0 0;height:min(32vw,280px);z-index:-1;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom / contain no-repeat;opacity:.42}
+a{color:inherit;text-decoration:none}a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+header{height:82px;background:rgba(7,25,38,.82);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 max(40px,calc((100vw - 1440px)/2));box-shadow:0 10px 28px rgba(0,0,0,.18)}
+.logo{width:38px;height:38px;display:block;background:linear-gradient(180deg,#16374c,#102537);border:1px solid var(--border);position:relative}
+.logo::before,.logo::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}.logo::before{inset:10px 16px 10px 9px}.logo::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+.brand{color:#b8c8d2;font-weight:600;font-size:14px}
+main{width:min(100% - 80px,1440px);margin:auto;padding:54px 0 100px}
+.back{display:inline-flex;align-items:center;gap:8px;color:#d3e3ed;font-size:14px;font-weight:650;margin-bottom:31px}.back:hover{color:#ff7687}.back svg{width:17px;height:17px}
+.dash{width:44px;height:4px;background:var(--red);box-shadow:0 0 24px rgba(232,63,84,.22);margin:0 0 26px}
+.titleline{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+.titleline h1{font-size:clamp(35px,4.8vw,63px);font-weight:780;letter-spacing:-.07em;line-height:1.18;margin:0}
+.titleline .total{font-size:clamp(39px,4.6vw,64px);line-height:1.13;letter-spacing:-.065em;font-weight:770;white-space:nowrap;font-variant-numeric:tabular-nums}
+.content{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:22px;margin-top:29px;align-items:start}
+.photo-panel{background:linear-gradient(142deg,#fafafa,#e9edef);border:1px solid #d6dfe3;min-height:559px;display:flex;align-items:center;justify-content:center;padding:42px;box-shadow:0 16px 35px rgba(0,0,0,.16)}
+.photo-panel img{display:block;max-width:100%;width:100%;height:470px;object-fit:contain}
+.record-panel{background:rgba(11,35,52,.92);border:1px solid rgba(176,205,225,.30);min-height:559px;padding:27px 30px 22px;box-shadow:0 16px 35px rgba(0,0,0,.14)}
+.record-head{display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid var(--border);padding-bottom:17px}
+.record-head h2{margin:0;font-size:23px;letter-spacing:-.055em}.record-head .matching{color:#bbcfdb;font-size:14px;font-weight:650;font-variant-numeric:tabular-nums}
+.search-wrap{display:flex;align-items:center;gap:12px;margin:15px 0 3px;height:43px;border:1px solid rgba(179,208,224,.32);background:rgba(3,18,29,.49);padding:0 13px}
+.search-wrap svg{width:17px;height:17px;flex:0 0 auto;stroke:#9fbaca}.search-wrap input{width:100%;font:inherit;font-size:13px;background:none;color:#edf5fa;border:0;outline:0;letter-spacing:-.02em}.search-wrap input::placeholder{color:#87a4b5}
+.record-scroll{max-height:454px;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#51758b transparent;scrollbar-width:thin}
+.individual{border-bottom:1px solid rgba(171,202,221,.15)}.individual[hidden]{display:none}
+.individual>summary{display:grid;grid-template-columns:39px minmax(0,1fr) auto 13px;align-items:center;gap:12px;min-height:71px;list-style:none;cursor:pointer;padding:11px 6px 11px 0}.individual>summary::-webkit-details-marker{display:none}
+.individual>summary:hover .identity{color:#fff}.order{font-size:12px;color:#819eaf;font-weight:700;letter-spacing:0}.identity{font-size:17px;font-weight:740;letter-spacing:-.025em;display:flex;flex-direction:column;gap:3px}.identity small{font-size:11px;color:#94b1c1;letter-spacing:.01em;font-weight:520}.asset-tail{font-size:14px;color:#c6d9e3;font-weight:630;font-variant-numeric:tabular-nums;letter-spacing:.005em}.chevron{border-right:2px solid #9db7c7;border-bottom:2px solid #9db7c7;width:9px;height:9px;transform:rotate(45deg);transition:transform .2s}.individual[open] .chevron{transform:translateY(3px) rotate(225deg)}
+.fields{margin:0 2px 17px 39px;padding:15px 17px;background:rgba(6,24,37,.70);border-left:2px solid #7d9ab0;display:grid;gap:10px}.item-field{display:grid;grid-template-columns:95px minmax(0,1fr);gap:14px;align-items:start;font-size:13px;line-height:1.55;overflow-wrap:anywhere}.field-label{color:#92afbf;font-weight:630}.field-value{color:#e7f2f8;letter-spacing:-.012em}
+.no-results{padding:45px 12px;text-align:center;color:#aac3d1;font-size:14px}
+@media(max-width:920px){main{width:min(100% - 48px,1440px);padding-top:36px}.content{grid-template-columns:1fr}.photo-panel{min-height:360px}.photo-panel img{height:340px}.record-panel{min-height:unset}.record-scroll{max-height:500px}}
+@media(max-width:520px){header{height:66px;padding:0 22px}.brand{font-size:12px}main{width:calc(100% - 38px);padding-top:25px}.back{margin-bottom:21px}.dash{margin-bottom:20px}.titleline{padding-bottom:22px;align-items:end}.titleline h1{font-size:clamp(26px,7vw,36px)}.titleline .total{font-size:33px}.content{gap:13px;margin-top:18px}.photo-panel{padding:20px;min-height:270px}.photo-panel img{height:275px}.record-panel{padding:20px 17px}.record-head h2{font-size:21px}.record-scroll{max-height:420px}.individual>summary{grid-template-columns:27px minmax(0,1fr) auto 10px;gap:8px;min-height:64px}.identity{font-size:15px}.asset-tail{font-size:12px}.fields{margin-left:27px;padding:13px 12px}.item-field{grid-template-columns:74px minmax(0,1fr);gap:9px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chevron{transition:none}}
+
+.titleline h1{min-width:0;overflow-wrap:anywhere}.identity small{overflow-wrap:anywhere}
+
+/* ICTC 승인 색상(2그룹 1번): 물품/개체 상세의 대표사진 패널 색상만 적용 */
+.photo-panel {
+  background: linear-gradient(135deg, #E8ECEE 0%, #DEE5E8 100%);
+  border-color: #D4DEE2;
+}
+
+
+/* 최종 공개본: 승인된 개체 상세 상단 압축 (정보 목록은 원형 보존) */
+header{height:60px;padding:0 max(28px,calc((100vw - 1440px)/2))}
+.logo{width:33px;height:33px}
+main{padding-top:19px}
+.back{font-size:13px;margin-bottom:13px}
+.dash{width:36px;height:3px;margin:0 0 12px}
+.titleline{align-items:center;padding-bottom:15px;gap:16px}
+.titleline h1{font-size:clamp(30px,3.3vw,47px);min-width:0;overflow-wrap:anywhere}
+.titleline .total{font-size:clamp(34px,3.3vw,47px)}
+.content{margin-top:16px;gap:19px}
+@media(max-width:920px){
+ main{padding-top:18px}
+ .titleline h1{font-size:clamp(28px,4.1vw,39px)}
+ .titleline .total{font-size:39px}
+ .photo-panel{min-height:300px}
+ .photo-panel img{height:270px}
+}
+@media(max-width:520px){
+ header{height:57px;padding:0 17px}
+ .logo{width:33px;height:33px}
+ main{padding-top:16px}
+ .back{margin-bottom:11px;font-size:12px}
+ .dash{margin-bottom:10px}
+ .titleline{padding-bottom:13px;gap:10px;align-items:center}
+ .titleline h1{font-size:clamp(22px,5.7vw,30px);line-height:1.21}
+ .titleline .total{font-size:30px}
+ .content{margin-top:13px;gap:12px}
+ .photo-panel{min-height:214px;padding:16px}
+ .photo-panel img{height:192px}
+ .record-panel{padding-top:17px}
+}
+
+</style></head>
+<body><header><a href="index.html" class="logo" aria-label="홈으로"></a><span class="brand">부산 ICTC · 소방청 국가자산</span></header><main><a class="back" href="공간별_상세.html?room=eval" aria-label="4층 평가관실 목록으로 돌아가기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>4층 평가관실</a>
+<div class="dash"></div><div class="titleline"><h1>4층 평가관실 · 대형 액정모니터</h1><div class="total">2점</div></div>
+<div class="content"><div class="photo-panel"><img src="assets/대표사진/훈련생모니터.png" alt="대형 액정모니터 대표사진"></div><section class="record-panel" aria-label="4층 평가관실 대형 액정모니터 2개체 목록"><div class="record-head"><h2>개체별 현황</h2><span class="matching" id="matchCount" aria-live="polite">2점</span></div><label class="search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m14.5 14.5 6 6"/></svg><input id="search" type="search" autocomplete="off" placeholder="개체ID · 관리번호 검색" aria-label="개체ID 또는 관리번호 검색"></label><div class="record-scroll" id="records"><details class="individual" data-search="ictc-0308 kkr-pa-24150736-00000176 lg oled65cxfna, 163cm lg oled65cxfna, 163cm 정상사용 태그확인"><summary aria-label="ICTC-0308 개체 세부정보 열기"><span class="order">01</span><span class="identity">ICTC-0308<small>LG OLED65CXFNA, 163cm</small></span><span class="asset-tail">00000176</span><span class="chevron" aria-hidden="true"></span></summary><div class="fields"><div class="item-field"><span class="field-label">관리번호</span><span class="field-value">KKR-PA-24150736-00000176</span></div><div class="item-field"><span class="field-label">모델명</span><span class="field-value">LG OLED65CXFNA, 163cm</span></div><div class="item-field"><span class="field-label">원장 기재 규격</span><span class="field-value">LG OLED65CXFNA, 163cm</span></div><div class="item-field"><span class="field-label">취득단가</span><span class="field-value">3,245,000원</span></div><div class="item-field"><span class="field-label">취득일자</span><span class="field-value">2023-12-20</span></div><div class="item-field"><span class="field-label">관리상태</span><span class="field-value">정상사용</span></div><div class="item-field"><span class="field-label">태그 상태</span><span class="field-value">태그확인</span></div></div></details>
+<details class="individual" data-search="ictc-0309 kkr-pa-24150736-00000177 lg oled65cxfna, 163cm lg oled65cxfna, 163cm 정상사용 태그확인"><summary aria-label="ICTC-0309 개체 세부정보 열기"><span class="order">02</span><span class="identity">ICTC-0309<small>LG OLED65CXFNA, 163cm</small></span><span class="asset-tail">00000177</span><span class="chevron" aria-hidden="true"></span></summary><div class="fields"><div class="item-field"><span class="field-label">관리번호</span><span class="field-value">KKR-PA-24150736-00000177</span></div><div class="item-field"><span class="field-label">모델명</span><span class="field-value">LG OLED65CXFNA, 163cm</span></div><div class="item-field"><span class="field-label">원장 기재 규격</span><span class="field-value">LG OLED65CXFNA, 163cm</span></div><div class="item-field"><span class="field-label">취득단가</span><span class="field-value">3,245,000원</span></div><div class="item-field"><span class="field-label">취득일자</span><span class="field-value">2023-12-20</span></div><div class="item-field"><span class="field-label">관리상태</span><span class="field-value">정상사용</span></div><div class="item-field"><span class="field-label">태그 상태</span><span class="field-value">태그확인</span></div></div></details><p id="empty" class="no-results" hidden>검색 결과가 없습니다.</p></div></section></div></main>
+<script>(function(){const query=document.getElementById('search'),rows=[...document.querySelectorAll('#records details.individual')],counter=document.getElementById('matchCount'),empty=document.getElementById('empty');function filter(){const value=query.value.trim().toLowerCase();let count=0;for(const row of rows){const visible=row.dataset.search.includes(value);row.hidden=!visible;if(!visible)row.open=false;else count++;}counter.textContent=count+'점';empty.hidden=count!==0;}query.addEventListener('input',filter);})();</script></body></html>

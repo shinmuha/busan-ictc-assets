@@ -1,0 +1,78 @@
+{
+  "source": "2026-10-15 XLSX reference; existing website lists as approved",
+  "room": "A훈련실",
+  "total_types": 14,
+  "total_items": 101,
+  "groups": [
+    {
+      "name": "디지털 무전기",
+      "count": 20,
+      "href": "A훈련실_무전기_개체현황.html"
+    },
+    {
+      "name": "수강용탁자",
+      "count": 12,
+      "href": "A훈련실_수강용탁자_개체현황.html"
+    },
+    {
+      "name": "접이식 의자",
+      "count": 12,
+      "href": "A훈련실_접이식 의자_개체현황.html"
+    },
+    {
+      "name": "강연대(훈련부스 테이블)",
+      "count": 10,
+      "href": "A훈련실_강연대(훈련부스 테이블)_개체현황.html"
+    },
+    {
+      "name": "조이스틱",
+      "count": 10,
+      "href": "A훈련실_조이스틱_개체현황.html"
+    },
+    {
+      "name": "홈시어터",
+      "count": 10,
+      "href": "A훈련실_홈시어터_개체현황.html"
+    },
+    {
+      "name": "대형 액정모니터",
+      "count": 9,
+      "href": "A훈련실_대형 액정모니터_개체현황.html"
+    },
+    {
+      "name": "이동식부스(훈련부스)",
+      "count": 9,
+      "href": "A훈련실_이동식부스(훈련부스)_개체현황.html"
+    },
+    {
+      "name": "소파",
+      "count": 3,
+      "href": "A훈련실_소파_개체현황.html"
+    },
+    {
+      "name": "강연대(발표대)",
+      "count": 2,
+      "href": "A훈련실_강연대(발표대)_개체현황.html"
+    },
+    {
+      "name": "마이크",
+      "count": 1,
+      "href": "A훈련실_마이크_개체현황.html"
+    },
+    {
+      "name": "전자칠판",
+      "count": 1,
+      "href": "A훈련실_전자칠판_개체현황.html"
+    },
+    {
+      "name": "지휘관 모니터(DID)",
+      "count": 1,
+      "href": "A훈련실_지휘관 모니터(DID)_개체현황.html"
+    },
+    {
+      "name": "카메라",
+      "count": 1,
+      "href": "A훈련실_카메라_개체현황.html"
+    }
+  ]
+}

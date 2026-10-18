@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#091c29">
+<title>부산 ICTC — 공통 배경 1단계 검토</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --navy-top:#071721;
+    --navy-mid:#0a1e2a;
+    --navy-floor:#081924;
+    --floor-gloss-strength: 1;
+    --grid-strength:.64;
+  }
+  *{box-sizing:border-box}
+  html{background:#071720;min-height:100%}
+  body{margin:0;min-height:100vh;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;background:#071720}
+  .backdrop{
+    position:relative;width:min(100%,1672px);margin:0 auto;
+    aspect-ratio:1672/941;isolation:isolate;overflow:hidden;
+    background:
+      radial-gradient(ellipse 52% 49% at 61% 8%,rgba(41,77,100,.27),transparent 85%),
+      radial-gradient(ellipse 54% 42% at 43% 34%,rgba(40,74,98,.11),transparent 83%),
+      radial-gradient(ellipse 54% 75% at 85% 65%,rgba(17,44,61,.17),transparent 95%),
+      linear-gradient(117deg,#071721 0%,#091b26 32%,#102332 59%,#071620 100%);
+  }
+  /* Scene-wide atmospheric contour — NOT a separate light source under each item. */
+  .atmosphere{position:absolute;inset:0;z-index:0;pointer-events:none;background:
+    radial-gradient(ellipse 49% 40% at 53% 8%,rgba(54,95,116,.11),transparent 85%),
+    radial-gradient(ellipse 68% 52% at 48% 74%,rgba(29,65,87,.07),transparent 92%);
+  }
+  /* A continuous navy-polished plane sits BEHIND all future transparent room models. */
+  .floor{position:absolute;z-index:1;left:0;right:0;top:34%;bottom:0;pointer-events:none;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.24) 22%,#000 65%);
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.24) 22%,#000 65%);
+    background:
+      radial-gradient(ellipse 77% 58% at 63% 73%,rgba(110,157,181,.055) 0%,rgba(55,96,119,.041) 37%,transparent 87%),
+      radial-gradient(ellipse 75% 54% at 22% 84%,rgba(80,124,147,.043) 0%,transparent 91%),
+      linear-gradient(180deg,transparent 0%,rgba(13,34,49,.080) 36%,rgba(46,81,102,.040) 73%,rgba(16,43,60,.089) 100%);
+  }
+  /* Genuine low-angle highlights sampled from the approved index's floor, softened and spread as one plane. */
+  .floor-sheen{position:absolute;z-index:2;inset:49% 0 0;pointer-events:none;opacity:calc(.22 * var(--floor-gloss-strength));
+    background-image:url("assets/index_floor_sheen.png");
+    background-size:82% 85%;background-position:65% 100%;background-repeat:no-repeat;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.3) 22%,#000 70%,rgba(0,0,0,.85));
+    mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.3) 22%,#000 70%,rgba(0,0,0,.85));
+  }
+  /* Low, broad grazing reflection across the surface, rather than circular light halos. */
+  .floor-varnish{position:absolute;z-index:2;left:-7%;right:-7%;top:48%;bottom:-12%;pointer-events:none;
+    background:
+      radial-gradient(ellipse 83% 17% at 54% 65%,rgba(167,196,209,.037),transparent 86%),
+      radial-gradient(ellipse 52% 8% at 73% 91%,rgba(169,194,211,.023),transparent 88%),
+      linear-gradient(88deg,transparent 5%,rgba(131,170,195,.016) 26%,transparent 46%,rgba(151,190,211,.024) 67%,transparent 91%);
+    filter:blur(23px);opacity:calc(.92 * var(--floor-gloss-strength));
+  }
+  .index-grid{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:var(--grid-strength);
+    background-image:
+      linear-gradient(90deg,rgba(111,162,184,.085) 1px,transparent 1px),
+      linear-gradient(0deg,rgba(111,162,184,.075) 1px,transparent 1px);
+    background-size:331px 100%,100% 110px;
+    background-position:-17px 0,0 16px;
+  }
+  .arcs{position:absolute;z-index:3;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:.58}
+  .diagonal-pattern{position:absolute;z-index:3;pointer-events:none;left:-12%;top:48%;width:49%;height:52%;opacity:.075;
+    background:repeating-linear-gradient(147deg,transparent 0 6px,rgba(132,174,196,.56) 6.5px,transparent 7px 12px);
+    transform:skewY(-8deg);-webkit-mask-image:linear-gradient(95deg,transparent 0%,black 40%,transparent 100%);
+    mask-image:linear-gradient(95deg,transparent 0%,black 40%,transparent 100%);
+  }
+  /* Nothing else is rendered in phase one: no room images, labels, controls, or invented reflections. */
+  @media(max-width:700px){.backdrop{aspect-ratio:auto;min-height:100vh}.index-grid{background-size:200px 100%,100% 95px}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+ <main class="backdrop" aria-label="부산 ICTC 공통 배경 1단계: 사진과 버튼 없이 배경 및 바닥 광택만 표시">
+   <div class="atmosphere" aria-hidden="true"></div>
+   <div class="floor" aria-hidden="true"></div>
+   <div class="floor-sheen" aria-hidden="true"></div>
+   <div class="floor-varnish" aria-hidden="true"></div>
+   <div class="index-grid" aria-hidden="true"></div>
+   <svg class="arcs" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle cx="1355" cy="438" r="282" fill="none" stroke="#81b0c7" stroke-opacity=".22" stroke-width="1.0"/>
+      <circle cx="1355" cy="438" r="226" fill="none" stroke="#81b0c7" stroke-opacity=".16" stroke-width="1.0"/>
+   </svg>
+   <div class="diagonal-pattern" aria-hidden="true"></div>
+ </main>
+</body>
+</html>

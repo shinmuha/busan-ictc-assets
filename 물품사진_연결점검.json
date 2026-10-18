@@ -1,0 +1,311 @@
+{
+  "source_file": "ICTC_국가자산_공개용_20261014(1).xlsx",
+  "group_count": 37,
+  "registered": 382,
+  "currently_present": 381,
+  "mapped_photos": 33,
+  "missing_photos": [
+    "KVM 스위치",
+    "냉난방기",
+    "통합 영상제어 서버(MCS)",
+    "XVR 교육용 소프트웨어"
+  ],
+  "groups": [
+    {
+      "name": "전자칠판",
+      "quantity": 5,
+      "registered": 5,
+      "kind": "일반 물품",
+      "row": 28,
+      "photo": "전자칠판.png"
+    },
+    {
+      "name": "디지털 무전기",
+      "quantity": 40,
+      "registered": 40,
+      "kind": "일반 물품",
+      "row": 16,
+      "photo": "무전기.png"
+    },
+    {
+      "name": "조이스틱",
+      "quantity": 20,
+      "registered": 20,
+      "kind": "일반 물품",
+      "row": 30,
+      "photo": "조이스틱.png"
+    },
+    {
+      "name": "대형 액정모니터",
+      "quantity": 22,
+      "registered": 22,
+      "kind": "일반 물품",
+      "row": 15,
+      "photo": "훈련생모니터.png"
+    },
+    {
+      "name": "접이식 의자",
+      "quantity": 58,
+      "registered": 58,
+      "kind": "일반 물품",
+      "row": 29,
+      "photo": "접이식의자.png"
+    },
+    {
+      "name": "카메라",
+      "quantity": 2,
+      "registered": 2,
+      "kind": "일반 물품",
+      "row": 31,
+      "photo": "카메라.png"
+    },
+    {
+      "name": "홈시어터",
+      "quantity": 21,
+      "registered": 21,
+      "kind": "일반 물품",
+      "row": 39,
+      "photo": "홈스테레오시스템.png"
+    },
+    {
+      "name": "평가관용 책상",
+      "quantity": 4,
+      "registered": 4,
+      "kind": "일반 물품",
+      "row": 36,
+      "photo": "평가관용책상.png"
+    },
+    {
+      "name": "KVM 스위치",
+      "quantity": 2,
+      "registered": 2,
+      "kind": "일반 물품",
+      "row": 8,
+      "photo": null
+    },
+    {
+      "name": "PC(워크스테이션)",
+      "quantity": 27,
+      "registered": 27,
+      "kind": "일반 물품",
+      "row": 9,
+      "photo": "컴퓨터 본체.png"
+    },
+    {
+      "name": "강연대(발표대)",
+      "quantity": 4,
+      "registered": 4,
+      "kind": "일반 물품",
+      "row": 10,
+      "photo": "발표대ERT.png"
+    },
+    {
+      "name": "강연대(훈련부스 테이블)",
+      "quantity": 20,
+      "registered": 20,
+      "kind": "일반 물품",
+      "row": 11,
+      "photo": "강연대QEL.png"
+    },
+    {
+      "name": "냉난방기",
+      "quantity": 1,
+      "registered": 1,
+      "kind": "일반 물품",
+      "row": 12,
+      "photo": null
+    },
+    {
+      "name": "네트워크 스위치",
+      "quantity": 2,
+      "registered": 2,
+      "kind": "일반 물품",
+      "row": 13,
+      "photo": "네트워크스위치.png"
+    },
+    {
+      "name": "단장용 테이블",
+      "quantity": 2,
+      "registered": 2,
+      "kind": "일반 물품",
+      "row": 14,
+      "photo": "단장용테이블MTPA 24.png"
+    },
+    {
+      "name": "마이크",
+      "quantity": 10,
+      "registered": 10,
+      "kind": "일반 물품",
+      "row": 17,
+      "photo": "마이크.png"
+    },
+    {
+      "name": "소파",
+      "quantity": 8,
+      "registered": 8,
+      "kind": "일반 물품",
+      "row": 18,
+      "photo": "소파.png"
+    },
+    {
+      "name": "수강용탁자",
+      "quantity": 40,
+      "registered": 40,
+      "kind": "일반 물품",
+      "row": 19,
+      "photo": "수강용탁자.png"
+    },
+    {
+      "name": "스텐드 테이블(강연대)",
+      "quantity": 2,
+      "registered": 2,
+      "kind": "일반 물품",
+      "row": 20,
+      "photo": "스탠드강연대SLT.png"
+    },
+    {
+      "name": "스피커",
+      "quantity": 4,
+      "registered": 4,
+      "kind": "일반 물품",
+      "row": 21,
+      "photo": "스피커.png"
+    },
+    {
+      "name": "시스템관리실 랙",
+      "quantity": 5,
+      "registered": 5,
+      "kind": "일반 물품",
+      "row": 22,
+      "photo": "시스템관리실 랙.png"
+    },
+    {
+      "name": "영상 MATRIX",
+      "quantity": 3,
+      "registered": 3,
+      "kind": "일반 물품",
+      "row": 23,
+      "photo": "매트릭스.png"
+    },
+    {
+      "name": "오디오믹서",
+      "quantity": 1,
+      "registered": 1,
+      "kind": "일반 물품",
+      "row": 24,
+      "photo": "오디오믹서.png"
+    },
+    {
+      "name": "이동식부스(훈련부스)",
+      "quantity": 20,
+      "registered": 20,
+      "kind": "일반 물품",
+      "row": 25,
+      "photo": "이동식부스.png"
+    },
+    {
+      "name": "작업용의자",
+      "quantity": 4,
+      "registered": 4,
+      "kind": "일반 물품",
+      "row": 26,
+      "photo": "훈련통제석의자.png"
+    },
+    {
+      "name": "전자교탁",
+      "quantity": 1,
+      "registered": 1,
+      "kind": "일반 물품",
+      "row": 27,
+      "photo": "전자교탁.png"
+    },
+    {
+      "name": "카운터",
+      "quantity": 3,
+      "registered": 4,
+      "kind": "일반 물품",
+      "row": 32,
+      "photo": "카운터.png"
+    },
+    {
+      "name": "컴퓨터 운용 책상",
+      "quantity": 1,
+      "registered": 1,
+      "kind": "일반 물품",
+      "row": 33,
+      "photo": "컴퓨터책상TC-CD06.png"
+    },
+    {
+      "name": "테이블(연결형)",
+      "quantity": 4,
+      "registered": 4,
+      "kind": "일반 물품",
+      "row": 34,
+      "photo": "테이블(연결형).png"
+    },
+    {
+      "name": "평가관용 의자",
+      "quantity": 5,
+      "registered": 5,
+      "kind": "일반 물품",
+      "row": 35,
+      "photo": "평가관용의자.png"
+    },
+    {
+      "name": "행정용 모니터",
+      "quantity": 11,
+      "registered": 11,
+      "kind": "일반 물품",
+      "row": 37,
+      "photo": "컴퓨터 모니터.png"
+    },
+    {
+      "name": "행정용(업무용) 책상",
+      "quantity": 1,
+      "registered": 1,
+      "kind": "일반 물품",
+      "row": 38,
+      "photo": "행정용(업무용)책상.png"
+    },
+    {
+      "name": "회의실 테이블",
+      "quantity": 3,
+      "registered": 3,
+      "kind": "일반 물품",
+      "row": 40,
+      "photo": "mtpa32.png"
+    },
+    {
+      "name": "지휘관 모니터(DID)",
+      "quantity": 2,
+      "registered": 2,
+      "kind": "SET 대표태그",
+      "row": 41,
+      "photo": "DID대형모니터.png"
+    },
+    {
+      "name": "EQ Rack",
+      "quantity": 1,
+      "registered": 1,
+      "kind": "계통장비",
+      "row": 42,
+      "photo": "EQ Rack.png"
+    },
+    {
+      "name": "통합 영상제어 서버(MCS)",
+      "quantity": 1,
+      "registered": 1,
+      "kind": "계통장비",
+      "row": 43,
+      "photo": null
+    },
+    {
+      "name": "XVR 교육용 소프트웨어",
+      "quantity": 21,
+      "registered": 21,
+      "kind": "소프트웨어",
+      "row": 44,
+      "photo": null
+    }
+  ]
+}

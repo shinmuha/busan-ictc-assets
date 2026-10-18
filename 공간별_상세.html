@@ -1,0 +1,1316 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>공간 물품 상세 · 부산 ICTC</title><style>
+:root{--paper:#f5f4f0;--ink:#15222b;--red:#e83f54}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic",sans-serif;letter-spacing:-.04em}a{color:inherit;text-decoration:none}
+header{height:82px;background:#f8f7f4;border-bottom:1px solid #dfe1df;display:flex;align-items:center;padding:0 max(40px,calc((100vw - 1440px)/2));justify-content:space-between}.brand{font-size:14px;font-weight:600;color:#60717a}.mark{width:38px;height:38px;display:grid;place-items:center;background:#112734;color:#f4f5f5;font-size:24px;line-height:1}
+main{width:min(100% - 80px,1440px);margin:auto;padding:52px 0 96px}.back{display:inline-flex;align-items:center;color:#65747c;font-size:14px;font-weight:650;margin-bottom:43px}.back:hover{color:var(--red)}.dash{width:44px;height:4px;background:var(--red);margin-bottom:24px}
+h1{font-size:clamp(38px,5vw,65px);margin:0;line-height:1.25;letter-spacing:-.07em;font-weight:780}.lead{margin:19px 0 0;color:#69777b;font-size:15px}.hero{display:flex;justify-content:space-between;align-items:end;gap:24px;border-bottom:1px solid #d5dad9;padding-bottom:38px}.num{font-size:49px;white-space:nowrap;line-height:1.1;font-weight:780;letter-spacing:-.06em}
+.notice{margin:24px 0 8px;padding:17px 20px;border-left:3px solid #a5b5be;background:#e9edee;color:#384e59;font-size:14px;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:34px}.card{background:white;border:1px solid #e0e2e0;min-width:0;display:flex;flex-direction:column;padding:12px 12px 18px;transition:border-color .15s}.card:hover{border-color:#9faeb7}.thumb{background:linear-gradient(143deg,#f9faf9,#eef0ef);height:177px;display:grid;place-items:center}.thumb img{max-width:94%;max-height:165px;object-fit:contain}.title{font-size:16px;font-weight:700;margin-top:16px;min-height:43px;line-height:1.35;word-break:keep-all}.count{color:#6a767b;font-size:14px;margin-top:9px;font-variant-numeric:tabular-nums}.empty{margin-top:36px;color:#6b787c;font-size:16px;line-height:1.9}
+a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:800px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{align-items:start;flex-direction:column}.num{font-size:36px}}@media(max-width:520px){header{padding:0 22px;height:66px}main{width:calc(100% - 38px);padding-top:29px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.thumb{height:148px}.thumb img{max-height:138px}.title{font-size:14px;min-height:38px}.num{font-size:32px}.notice{font-size:13px}}
+
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-a{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-a::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-a::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-a header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-a .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-a .mark{position:relative;font-size:0;overflow:hidden}
+body.room-a .mark::before,body.room-a .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-a .mark::before{inset:10px 16px 10px 9px}
+body.room-a .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-a .brand{color:#b8c8d2}
+body.room-a main{position:relative;z-index:1;padding-top:58px}
+body.room-a .back{color:#d3e3ed;margin-bottom:34px}
+body.room-a .back:hover{color:#ff7687}
+body.room-a .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-a .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-a h1,body.room-a .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-a .lead{color:#b7cbd8}
+body.room-a .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-a .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-a .room-info .sep{opacity:.42}
+body.room-a .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-a .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-a .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-a .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-a .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-a .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-a .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-a .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-a .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-a .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-a .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-a .grid{margin-top:0;gap:14px}
+body.room-a .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-a .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-a .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-a .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-a .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-a .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-a .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-a .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-a .empty{color:#b8c9d6}
+body.room-a .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-a .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-a .a-overview{grid-template-columns:1fr}body.room-a .a-overview-copy{padding:25px 28px 14px}body.room-a .a-overview-visual{min-height:175px}body.room-a .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-a main{padding-top:27px}body.room-a .back{margin-bottom:22px}body.room-a .dash{margin-bottom:21px}body.room-a .hero{padding-bottom:22px}body.room-a .lead{font-size:13px;line-height:1.55}body.room-a .room-info{margin-top:12px}body.room-a .a-overview{margin-top:22px}body.room-a .a-overview-copy{padding:21px 21px 10px}body.room-a .a-overview h2{font-size:21px}body.room-a .a-overview p{font-size:13px}body.room-a .a-overview-visual img{height:170px}body.room-a .a-overview-visual figcaption{font-size:10px;right:9px}body.room-a .a-section-heading{margin-top:30px}body.room-a .a-section-heading h2{font-size:19px}body.room-a .grid{gap:10px}body.room-a .card{padding:6px 6px 12px;min-height:212px}body.room-a .thumb{height:124px;padding:6px}body.room-a .thumb img{max-height:114px}body.room-a .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-a .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-a .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-a .a-overview{display:grid}body.room-a .a-section-heading{display:flex}body.room-a .room-info{display:flex}body.room-a .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-a .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-a .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-a .hero>div:first-child{min-width:0;grid-column:1}
+body.room-a .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-a .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-a .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-a .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-a .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-a .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-a .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-a .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-a .hero{gap:8px;padding-bottom:20px}
+ body.room-a .hero>.a-overview-visual{height:170px}
+ body.room-a .hero>.a-overview-visual img{height:168px}
+ body.room-a .hero>.num{font-size:34px}
+ body.room-a .grid{margin-top:20px}
+}
+
+/* B훈련실: 승인된 A훈련실 CSS를 변경 없이 동일 적용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-b{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-b::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-b::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-b header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-b .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-b .mark{position:relative;font-size:0;overflow:hidden}
+body.room-b .mark::before,body.room-b .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-b .mark::before{inset:10px 16px 10px 9px}
+body.room-b .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-b .brand{color:#b8c8d2}
+body.room-b main{position:relative;z-index:1;padding-top:58px}
+body.room-b .back{color:#d3e3ed;margin-bottom:34px}
+body.room-b .back:hover{color:#ff7687}
+body.room-b .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-b .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-b h1,body.room-b .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-b .lead{color:#b7cbd8}
+body.room-b .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-b .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-b .room-info .sep{opacity:.42}
+body.room-b .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-b .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-b .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-b .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-b .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-b .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-b .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-b .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-b .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-b .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-b .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-b .grid{margin-top:0;gap:14px}
+body.room-b .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-b .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-b .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-b .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-b .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-b .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-b .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-b .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-b .empty{color:#b8c9d6}
+body.room-b .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-b .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-b .a-overview{grid-template-columns:1fr}body.room-b .a-overview-copy{padding:25px 28px 14px}body.room-b .a-overview-visual{min-height:175px}body.room-b .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-b main{padding-top:27px}body.room-b .back{margin-bottom:22px}body.room-b .dash{margin-bottom:21px}body.room-b .hero{padding-bottom:22px}body.room-b .lead{font-size:13px;line-height:1.55}body.room-b .room-info{margin-top:12px}body.room-b .a-overview{margin-top:22px}body.room-b .a-overview-copy{padding:21px 21px 10px}body.room-b .a-overview h2{font-size:21px}body.room-b .a-overview p{font-size:13px}body.room-b .a-overview-visual img{height:170px}body.room-b .a-overview-visual figcaption{font-size:10px;right:9px}body.room-b .a-section-heading{margin-top:30px}body.room-b .a-section-heading h2{font-size:19px}body.room-b .grid{gap:10px}body.room-b .card{padding:6px 6px 12px;min-height:212px}body.room-b .thumb{height:124px;padding:6px}body.room-b .thumb img{max-height:114px}body.room-b .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-b .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-b .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-b .a-overview{display:grid}body.room-b .a-section-heading{display:flex}body.room-b .room-info{display:flex}body.room-b .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-b .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-b .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-b .hero>div:first-child{min-width:0;grid-column:1}
+body.room-b .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-b .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-b .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-b .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-b .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-b .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-b .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-b .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-b .hero{gap:8px;padding-bottom:20px}
+ body.room-b .hero>.a-overview-visual{height:170px}
+ body.room-b .hero>.a-overview-visual img{height:168px}
+ body.room-b .hero>.num{font-size:34px}
+ body.room-b .grid{margin-top:20px}
+}
+
+
+/* 시스템관리실: 기승인 공간별 디자인 동일 적용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-rack{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-rack::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-rack::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-rack header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-rack .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-rack .mark{position:relative;font-size:0;overflow:hidden}
+body.room-rack .mark::before,body.room-rack .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-rack .mark::before{inset:10px 16px 10px 9px}
+body.room-rack .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-rack .brand{color:#b8c8d2}
+body.room-rack main{position:relative;z-index:1;padding-top:58px}
+body.room-rack .back{color:#d3e3ed;margin-bottom:34px}
+body.room-rack .back:hover{color:#ff7687}
+body.room-rack .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-rack .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-rack h1,body.room-rack .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-rack .lead{color:#b7cbd8}
+body.room-rack .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-rack .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-rack .room-info .sep{opacity:.42}
+body.room-rack .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-rack .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-rack .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-rack .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-rack .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-rack .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-rack .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-rack .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-rack .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-rack .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-rack .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-rack .grid{margin-top:0;gap:14px}
+body.room-rack .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-rack .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-rack .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-rack .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-rack .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-rack .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-rack .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-rack .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-rack .empty{color:#b8c9d6}
+body.room-rack .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-rack .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-rack .a-overview{grid-template-columns:1fr}body.room-rack .a-overview-copy{padding:25px 28px 14px}body.room-rack .a-overview-visual{min-height:175px}body.room-rack .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-rack main{padding-top:27px}body.room-rack .back{margin-bottom:22px}body.room-rack .dash{margin-bottom:21px}body.room-rack .hero{padding-bottom:22px}body.room-rack .lead{font-size:13px;line-height:1.55}body.room-rack .room-info{margin-top:12px}body.room-rack .a-overview{margin-top:22px}body.room-rack .a-overview-copy{padding:21px 21px 10px}body.room-rack .a-overview h2{font-size:21px}body.room-rack .a-overview p{font-size:13px}body.room-rack .a-overview-visual img{height:170px}body.room-rack .a-overview-visual figcaption{font-size:10px;right:9px}body.room-rack .a-section-heading{margin-top:30px}body.room-rack .a-section-heading h2{font-size:19px}body.room-rack .grid{gap:10px}body.room-rack .card{padding:6px 6px 12px;min-height:212px}body.room-rack .thumb{height:124px;padding:6px}body.room-rack .thumb img{max-height:114px}body.room-rack .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-rack .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-rack .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-rack .a-overview{display:grid}body.room-rack .a-section-heading{display:flex}body.room-rack .room-info{display:flex}body.room-rack .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-rack .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-rack .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-rack .hero>div:first-child{min-width:0;grid-column:1}
+body.room-rack .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-rack .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-rack .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-rack .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-rack .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-rack .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-rack .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-rack .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-rack .hero{gap:8px;padding-bottom:20px}
+ body.room-rack .hero>.a-overview-visual{height:170px}
+ body.room-rack .hero>.a-overview-visual img{height:168px}
+ body.room-rack .hero>.num{font-size:34px}
+ body.room-rack .grid{margin-top:20px}
+}
+
+
+
+/* 시스템관리실 XVR: 소프트웨어는 물리 장비와 분리하여 표시 */
+body.room-rack .rack-section-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:35px 0 17px;padding-bottom:14px;border-bottom:1px solid rgba(177,205,220,.20);font-size:21px;font-weight:740;color:#edf5fa;letter-spacing:-.05em}
+body.room-rack .rack-section-title span{font-size:13px;font-weight:540;color:#afc7d5;letter-spacing:-.02em}
+body.room-rack .rack-software{margin-top:39px}
+body.room-rack .rack-software .rack-section-title{margin:0 0 18px}
+body.room-rack .rack-xvr-card{min-height:134px;display:flex;gap:22px;align-items:center;padding:21px 26px;background:linear-gradient(108deg,rgba(24,57,79,.96),rgba(10,30,45,.97));border:1px solid rgba(151,194,222,.34);box-shadow:0 12px 30px rgba(0,0,0,.14);transition:border-color .18s,transform .18s;}
+body.room-rack .rack-xvr-card:hover{border-color:rgba(199,228,246,.78);transform:translateY(-2px)}
+body.room-rack .rack-xvr-symbol{width:90px;height:83px;border:1px solid rgba(167,211,235,.28);background:linear-gradient(150deg,#143950,#0b2133);display:grid;place-items:center;flex-shrink:0}
+body.room-rack .rack-xvr-symbol svg{height:46px;width:48px;color:#c8e0ef}
+body.room-rack .rack-xvr-name{font-size:24px;font-weight:760;color:#f3f8fc;letter-spacing:-.05em;line-height:1.3}
+body.room-rack .rack-xvr-sub{font-size:14px;color:#aac6d7;margin-top:9px;letter-spacing:-.025em}
+body.room-rack .rack-xvr-count{font-size:26px;font-weight:750;white-space:nowrap;color:#e9f5fc;margin-left:auto}
+body.room-rack .rack-xvr-chevron{font-size:29px;color:#a7cadf;margin-left:8px}
+@media(max-width:620px){body.room-rack .rack-section-title{font-size:18px;margin-top:26px}body.room-rack .rack-software{margin-top:27px}body.room-rack .rack-xvr-card{padding:15px 13px;gap:12px;min-height:105px}body.room-rack .rack-xvr-symbol{width:55px;height:58px}body.room-rack .rack-xvr-symbol svg{width:31px;height:31px}body.room-rack .rack-xvr-name{font-size:17px}body.room-rack .rack-xvr-sub{font-size:12px;line-height:1.6}body.room-rack .rack-xvr-count{font-size:18px}body.room-rack .rack-xvr-chevron{font-size:21px;margin-left:1px}}
+
+/* XVR 카드: 부산소방학교 XVR 라이선스 인증서 실제 원본 사용 */
+body.room-rack .rack-xvr-symbol{width:83px;height:110px;padding:5px;background:#fff;border:1px solid rgba(236,237,240,.85);box-shadow:0 4px 12px rgba(0,0,0,.2);overflow:hidden;flex-shrink:0}
+body.room-rack .rack-xvr-symbol img{display:block;width:100%;height:100%;object-fit:contain}
+@media(max-width:620px){body.room-rack .rack-xvr-symbol{width:57px;height:80px;padding:3px}body.room-rack .rack-xvr-card{min-height:117px}}
+
+/* 4층 평가관실: 기승인 공간별 카드 디자인 활용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-eval{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-eval::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-eval::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-eval header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-eval .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-eval .mark{position:relative;font-size:0;overflow:hidden}
+body.room-eval .mark::before,body.room-eval .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-eval .mark::before{inset:10px 16px 10px 9px}
+body.room-eval .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-eval .brand{color:#b8c8d2}
+body.room-eval main{position:relative;z-index:1;padding-top:58px}
+body.room-eval .back{color:#d3e3ed;margin-bottom:34px}
+body.room-eval .back:hover{color:#ff7687}
+body.room-eval .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-eval .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-eval h1,body.room-eval .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-eval .lead{color:#b7cbd8}
+body.room-eval .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-eval .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-eval .room-info .sep{opacity:.42}
+body.room-eval .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-eval .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-eval .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-eval .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-eval .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-eval .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-eval .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-eval .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-eval .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-eval .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-eval .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-eval .grid{margin-top:0;gap:14px}
+body.room-eval .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-eval .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-eval .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-eval .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-eval .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-eval .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-eval .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-eval .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-eval .empty{color:#b8c9d6}
+body.room-eval .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-eval .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-eval .a-overview{grid-template-columns:1fr}body.room-eval .a-overview-copy{padding:25px 28px 14px}body.room-eval .a-overview-visual{min-height:175px}body.room-eval .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-eval main{padding-top:27px}body.room-eval .back{margin-bottom:22px}body.room-eval .dash{margin-bottom:21px}body.room-eval .hero{padding-bottom:22px}body.room-eval .lead{font-size:13px;line-height:1.55}body.room-eval .room-info{margin-top:12px}body.room-eval .a-overview{margin-top:22px}body.room-eval .a-overview-copy{padding:21px 21px 10px}body.room-eval .a-overview h2{font-size:21px}body.room-eval .a-overview p{font-size:13px}body.room-eval .a-overview-visual img{height:170px}body.room-eval .a-overview-visual figcaption{font-size:10px;right:9px}body.room-eval .a-section-heading{margin-top:30px}body.room-eval .a-section-heading h2{font-size:19px}body.room-eval .grid{gap:10px}body.room-eval .card{padding:6px 6px 12px;min-height:212px}body.room-eval .thumb{height:124px;padding:6px}body.room-eval .thumb img{max-height:114px}body.room-eval .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-eval .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-eval .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-eval .a-overview{display:grid}body.room-eval .a-section-heading{display:flex}body.room-eval .room-info{display:flex}body.room-eval .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-eval .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-eval .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-eval .hero>div:first-child{min-width:0;grid-column:1}
+body.room-eval .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-eval .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-eval .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-eval .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-eval .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-eval .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-eval .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-eval .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-eval .hero{gap:8px;padding-bottom:20px}
+ body.room-eval .hero>.a-overview-visual{height:170px}
+ body.room-eval .hero>.a-overview-visual img{height:168px}
+ body.room-eval .hero>.num{font-size:34px}
+ body.room-eval .grid{margin-top:20px}
+}
+
+
+
+body.room-eval .hero>.a-overview-visual img{max-height:246px;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-eval .hero>.a-overview-visual img{max-height:190px}}
+
+/* 4층 강의실: 승인된 A훈련실 카드 및 네이비 디자인 재사용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-lecture{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-lecture::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-lecture::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-lecture header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-lecture .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-lecture .mark{position:relative;font-size:0;overflow:hidden}
+body.room-lecture .mark::before,body.room-lecture .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-lecture .mark::before{inset:10px 16px 10px 9px}
+body.room-lecture .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-lecture .brand{color:#b8c8d2}
+body.room-lecture main{position:relative;z-index:1;padding-top:58px}
+body.room-lecture .back{color:#d3e3ed;margin-bottom:34px}
+body.room-lecture .back:hover{color:#ff7687}
+body.room-lecture .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-lecture .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-lecture h1,body.room-lecture .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-lecture .lead{color:#b7cbd8}
+body.room-lecture .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-lecture .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-lecture .room-info .sep{opacity:.42}
+body.room-lecture .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-lecture .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-lecture .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-lecture .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-lecture .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-lecture .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-lecture .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-lecture .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-lecture .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-lecture .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-lecture .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-lecture .grid{margin-top:0;gap:14px}
+body.room-lecture .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-lecture .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-lecture .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-lecture .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-lecture .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-lecture .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-lecture .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-lecture .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-lecture .empty{color:#b8c9d6}
+body.room-lecture .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-lecture .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-lecture .a-overview{grid-template-columns:1fr}body.room-lecture .a-overview-copy{padding:25px 28px 14px}body.room-lecture .a-overview-visual{min-height:175px}body.room-lecture .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-lecture main{padding-top:27px}body.room-lecture .back{margin-bottom:22px}body.room-lecture .dash{margin-bottom:21px}body.room-lecture .hero{padding-bottom:22px}body.room-lecture .lead{font-size:13px;line-height:1.55}body.room-lecture .room-info{margin-top:12px}body.room-lecture .a-overview{margin-top:22px}body.room-lecture .a-overview-copy{padding:21px 21px 10px}body.room-lecture .a-overview h2{font-size:21px}body.room-lecture .a-overview p{font-size:13px}body.room-lecture .a-overview-visual img{height:170px}body.room-lecture .a-overview-visual figcaption{font-size:10px;right:9px}body.room-lecture .a-section-heading{margin-top:30px}body.room-lecture .a-section-heading h2{font-size:19px}body.room-lecture .grid{gap:10px}body.room-lecture .card{padding:6px 6px 12px;min-height:212px}body.room-lecture .thumb{height:124px;padding:6px}body.room-lecture .thumb img{max-height:114px}body.room-lecture .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-lecture .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-lecture .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-lecture .a-overview{display:grid}body.room-lecture .a-section-heading{display:flex}body.room-lecture .room-info{display:flex}body.room-lecture .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-lecture .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-lecture .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-lecture .hero>div:first-child{min-width:0;grid-column:1}
+body.room-lecture .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-lecture .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-lecture .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-lecture .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-lecture .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-lecture .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-lecture .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-lecture .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-lecture .hero{gap:8px;padding-bottom:20px}
+ body.room-lecture .hero>.a-overview-visual{height:170px}
+ body.room-lecture .hero>.a-overview-visual img{height:168px}
+ body.room-lecture .hero>.num{font-size:34px}
+ body.room-lecture .grid{margin-top:20px}
+}
+
+
+
+body.room-lecture .hero>.a-overview-visual img{max-height:246px;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-lecture .hero>.a-overview-visual img{max-height:190px}}
+
+/* 디브리핑실: 승인된 A훈련실 카드 및 네이비 디자인 재사용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-debrief{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-debrief::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-debrief::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-debrief header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-debrief .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-debrief .mark{position:relative;font-size:0;overflow:hidden}
+body.room-debrief .mark::before,body.room-debrief .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-debrief .mark::before{inset:10px 16px 10px 9px}
+body.room-debrief .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-debrief .brand{color:#b8c8d2}
+body.room-debrief main{position:relative;z-index:1;padding-top:58px}
+body.room-debrief .back{color:#d3e3ed;margin-bottom:34px}
+body.room-debrief .back:hover{color:#ff7687}
+body.room-debrief .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-debrief .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-debrief h1,body.room-debrief .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-debrief .lead{color:#b7cbd8}
+body.room-debrief .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-debrief .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-debrief .room-info .sep{opacity:.42}
+body.room-debrief .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-debrief .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-debrief .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-debrief .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-debrief .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-debrief .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-debrief .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-debrief .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-debrief .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-debrief .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-debrief .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-debrief .grid{margin-top:0;gap:14px}
+body.room-debrief .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-debrief .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-debrief .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-debrief .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-debrief .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-debrief .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-debrief .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-debrief .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-debrief .empty{color:#b8c9d6}
+body.room-debrief .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-debrief .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-debrief .a-overview{grid-template-columns:1fr}body.room-debrief .a-overview-copy{padding:25px 28px 14px}body.room-debrief .a-overview-visual{min-height:175px}body.room-debrief .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-debrief main{padding-top:27px}body.room-debrief .back{margin-bottom:22px}body.room-debrief .dash{margin-bottom:21px}body.room-debrief .hero{padding-bottom:22px}body.room-debrief .lead{font-size:13px;line-height:1.55}body.room-debrief .room-info{margin-top:12px}body.room-debrief .a-overview{margin-top:22px}body.room-debrief .a-overview-copy{padding:21px 21px 10px}body.room-debrief .a-overview h2{font-size:21px}body.room-debrief .a-overview p{font-size:13px}body.room-debrief .a-overview-visual img{height:170px}body.room-debrief .a-overview-visual figcaption{font-size:10px;right:9px}body.room-debrief .a-section-heading{margin-top:30px}body.room-debrief .a-section-heading h2{font-size:19px}body.room-debrief .grid{gap:10px}body.room-debrief .card{padding:6px 6px 12px;min-height:212px}body.room-debrief .thumb{height:124px;padding:6px}body.room-debrief .thumb img{max-height:114px}body.room-debrief .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-debrief .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-debrief .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-debrief .a-overview{display:grid}body.room-debrief .a-section-heading{display:flex}body.room-debrief .room-info{display:flex}body.room-debrief .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-debrief .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-debrief .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-debrief .hero>div:first-child{min-width:0;grid-column:1}
+body.room-debrief .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-debrief .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-debrief .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-debrief .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-debrief .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-debrief .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-debrief .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-debrief .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-debrief .hero{gap:8px;padding-bottom:20px}
+ body.room-debrief .hero>.a-overview-visual{height:170px}
+ body.room-debrief .hero>.a-overview-visual img{height:168px}
+ body.room-debrief .hero>.num{font-size:34px}
+ body.room-debrief .grid{margin-top:20px}
+}
+
+
+
+body.room-debrief .hero>.a-overview-visual img{max-height:245px;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-debrief .hero>.a-overview-visual img{max-height:190px}}
+
+/* 사무실: 승인된 A훈련실 카드 및 네이비 디자인 재사용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-office{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-office::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-office::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-office header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-office .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-office .mark{position:relative;font-size:0;overflow:hidden}
+body.room-office .mark::before,body.room-office .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-office .mark::before{inset:10px 16px 10px 9px}
+body.room-office .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-office .brand{color:#b8c8d2}
+body.room-office main{position:relative;z-index:1;padding-top:58px}
+body.room-office .back{color:#d3e3ed;margin-bottom:34px}
+body.room-office .back:hover{color:#ff7687}
+body.room-office .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-office .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-office h1,body.room-office .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-office .lead{color:#b7cbd8}
+body.room-office .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-office .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-office .room-info .sep{opacity:.42}
+body.room-office .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-office .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-office .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-office .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-office .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-office .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-office .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-office .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-office .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-office .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-office .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-office .grid{margin-top:0;gap:14px}
+body.room-office .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-office .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-office .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-office .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-office .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-office .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-office .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-office .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-office .empty{color:#b8c9d6}
+body.room-office .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-office .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-office .a-overview{grid-template-columns:1fr}body.room-office .a-overview-copy{padding:25px 28px 14px}body.room-office .a-overview-visual{min-height:175px}body.room-office .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-office main{padding-top:27px}body.room-office .back{margin-bottom:22px}body.room-office .dash{margin-bottom:21px}body.room-office .hero{padding-bottom:22px}body.room-office .lead{font-size:13px;line-height:1.55}body.room-office .room-info{margin-top:12px}body.room-office .a-overview{margin-top:22px}body.room-office .a-overview-copy{padding:21px 21px 10px}body.room-office .a-overview h2{font-size:21px}body.room-office .a-overview p{font-size:13px}body.room-office .a-overview-visual img{height:170px}body.room-office .a-overview-visual figcaption{font-size:10px;right:9px}body.room-office .a-section-heading{margin-top:30px}body.room-office .a-section-heading h2{font-size:19px}body.room-office .grid{gap:10px}body.room-office .card{padding:6px 6px 12px;min-height:212px}body.room-office .thumb{height:124px;padding:6px}body.room-office .thumb img{max-height:114px}body.room-office .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-office .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-office .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-office .a-overview{display:grid}body.room-office .a-section-heading{display:flex}body.room-office .room-info{display:flex}body.room-office .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-office .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-office .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-office .hero>div:first-child{min-width:0;grid-column:1}
+body.room-office .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-office .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-office .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-office .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-office .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-office .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-office .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-office .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-office .hero{gap:8px;padding-bottom:20px}
+ body.room-office .hero>.a-overview-visual{height:170px}
+ body.room-office .hero>.a-overview-visual img{height:168px}
+ body.room-office .hero>.num{font-size:34px}
+ body.room-office .grid{margin-top:20px}
+}
+
+
+
+body.room-office .hero>.a-overview-visual img{max-height:245px;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-office .hero>.a-overview-visual img{max-height:190px}}
+
+/* 수영장: 승인된 네이비 카드·상단 구성 계승 (전용 조감도 없음) */
+/* 수영장: 승인된 A훈련실 카드 및 네이비 디자인 재사용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-pool{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-pool::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-pool::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-pool header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-pool .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-pool .mark{position:relative;font-size:0;overflow:hidden}
+body.room-pool .mark::before,body.room-pool .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-pool .mark::before{inset:10px 16px 10px 9px}
+body.room-pool .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-pool .brand{color:#b8c8d2}
+body.room-pool main{position:relative;z-index:1;padding-top:58px}
+body.room-pool .back{color:#d3e3ed;margin-bottom:34px}
+body.room-pool .back:hover{color:#ff7687}
+body.room-pool .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-pool .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-pool h1,body.room-pool .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-pool .lead{color:#b7cbd8}
+body.room-pool .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-pool .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-pool .room-info .sep{opacity:.42}
+body.room-pool .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-pool .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-pool .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-pool .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-pool .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-pool .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-pool .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-pool .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-pool .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-pool .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-pool .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-pool .grid{margin-top:0;gap:14px}
+body.room-pool .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-pool .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-pool .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-pool .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-pool .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-pool .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-pool .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-pool .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-pool .empty{color:#b8c9d6}
+body.room-pool .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-pool .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-pool .a-overview{grid-template-columns:1fr}body.room-pool .a-overview-copy{padding:25px 28px 14px}body.room-pool .a-overview-visual{min-height:175px}body.room-pool .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-pool main{padding-top:27px}body.room-pool .back{margin-bottom:22px}body.room-pool .dash{margin-bottom:21px}body.room-pool .hero{padding-bottom:22px}body.room-pool .lead{font-size:13px;line-height:1.55}body.room-pool .room-info{margin-top:12px}body.room-pool .a-overview{margin-top:22px}body.room-pool .a-overview-copy{padding:21px 21px 10px}body.room-pool .a-overview h2{font-size:21px}body.room-pool .a-overview p{font-size:13px}body.room-pool .a-overview-visual img{height:170px}body.room-pool .a-overview-visual figcaption{font-size:10px;right:9px}body.room-pool .a-section-heading{margin-top:30px}body.room-pool .a-section-heading h2{font-size:19px}body.room-pool .grid{gap:10px}body.room-pool .card{padding:6px 6px 12px;min-height:212px}body.room-pool .thumb{height:124px;padding:6px}body.room-pool .thumb img{max-height:114px}body.room-pool .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-pool .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-pool .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-pool .a-overview{display:grid}body.room-pool .a-section-heading{display:flex}body.room-pool .room-info{display:flex}body.room-pool .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-pool .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-pool .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-pool .hero>div:first-child{min-width:0;grid-column:1}
+body.room-pool .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-pool .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-pool .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-pool .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-pool .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-pool .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-pool .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-pool .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-pool .hero{gap:8px;padding-bottom:20px}
+ body.room-pool .hero>.a-overview-visual{height:170px}
+ body.room-pool .hero>.a-overview-visual img{height:168px}
+ body.room-pool .hero>.num{font-size:34px}
+ body.room-pool .grid{margin-top:20px}
+}
+
+
+
+body.room-pool .hero>.a-overview-visual img{max-height:245px;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-pool .hero>.a-overview-visual img{max-height:190px}}
+
+body.room-pool .hero>.a-overview-visual img{height:200px;max-height:200px;width:auto;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-pool .hero>.a-overview-visual img{height:165px;max-height:165px}}
+
+/* 수영장 전용 조감도 미확보: 공간 상단에는 이미지 없이 명칭과 물품 수만 표시 */
+@media(min-width:951px){
+  body.room-pool .hero{grid-template-columns:minmax(0,1fr) max-content}
+  body.room-pool .hero>.num{grid-column:2}
+}
+
+/* 1층 본관동 공간: 조감도 없이 수영장 승인 화면과 동일한 카드 구성 */
+/* 1층 본관동: 승인된 네이비 카드·상단 구성 계승 (전용 조감도 없음) */
+/* 1층 본관동: 승인된 A훈련실 카드 및 네이비 디자인 재사용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-main{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-main::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-main::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-main header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-main .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-main .mark{position:relative;font-size:0;overflow:hidden}
+body.room-main .mark::before,body.room-main .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-main .mark::before{inset:10px 16px 10px 9px}
+body.room-main .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-main .brand{color:#b8c8d2}
+body.room-main main{position:relative;z-index:1;padding-top:58px}
+body.room-main .back{color:#d3e3ed;margin-bottom:34px}
+body.room-main .back:hover{color:#ff7687}
+body.room-main .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-main .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-main h1,body.room-main .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-main .lead{color:#b7cbd8}
+body.room-main .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-main .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-main .room-info .sep{opacity:.42}
+body.room-main .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-main .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-main .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-main .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-main .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-main .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-main .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-main .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-main .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-main .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-main .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-main .grid{margin-top:0;gap:14px}
+body.room-main .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-main .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-main .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-main .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-main .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-main .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-main .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-main .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-main .empty{color:#b8c9d6}
+body.room-main .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-main .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-main .a-overview{grid-template-columns:1fr}body.room-main .a-overview-copy{padding:25px 28px 14px}body.room-main .a-overview-visual{min-height:175px}body.room-main .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-main main{padding-top:27px}body.room-main .back{margin-bottom:22px}body.room-main .dash{margin-bottom:21px}body.room-main .hero{padding-bottom:22px}body.room-main .lead{font-size:13px;line-height:1.55}body.room-main .room-info{margin-top:12px}body.room-main .a-overview{margin-top:22px}body.room-main .a-overview-copy{padding:21px 21px 10px}body.room-main .a-overview h2{font-size:21px}body.room-main .a-overview p{font-size:13px}body.room-main .a-overview-visual img{height:170px}body.room-main .a-overview-visual figcaption{font-size:10px;right:9px}body.room-main .a-section-heading{margin-top:30px}body.room-main .a-section-heading h2{font-size:19px}body.room-main .grid{gap:10px}body.room-main .card{padding:6px 6px 12px;min-height:212px}body.room-main .thumb{height:124px;padding:6px}body.room-main .thumb img{max-height:114px}body.room-main .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-main .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-main .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-main .a-overview{display:grid}body.room-main .a-section-heading{display:flex}body.room-main .room-info{display:flex}body.room-main .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-main .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-main .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-main .hero>div:first-child{min-width:0;grid-column:1}
+body.room-main .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-main .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-main .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-main .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-main .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-main .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-main .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-main .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-main .hero{gap:8px;padding-bottom:20px}
+ body.room-main .hero>.a-overview-visual{height:170px}
+ body.room-main .hero>.a-overview-visual img{height:168px}
+ body.room-main .hero>.num{font-size:34px}
+ body.room-main .grid{margin-top:20px}
+}
+
+
+
+body.room-main .hero>.a-overview-visual img{max-height:245px;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-main .hero>.a-overview-visual img{max-height:190px}}
+
+body.room-main .hero>.a-overview-visual img{height:200px;max-height:200px;width:auto;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-main .hero>.a-overview-visual img{height:165px;max-height:165px}}
+
+/* 1층 본관동 전용 조감도 미확보: 공간 상단에는 이미지 없이 명칭과 물품 수만 표시 */
+@media(min-width:951px){
+  body.room-main .hero{grid-template-columns:minmax(0,1fr) max-content}
+  body.room-main .hero>.num{grid-column:2}
+}
+
+
+/* 4층 강사대기실: 본관동 승인 레이아웃 재사용 */
+/* 4층 강사대기실 공간: 조감도 없이 수영장 승인 화면과 동일한 카드 구성 */
+/* 4층 강사대기실: 승인된 네이비 카드·상단 구성 계승 (전용 조감도 없음) */
+/* 4층 강사대기실: 승인된 A훈련실 카드 및 네이비 디자인 재사용 */
+/* A훈련실 시범 디자인: 네이비 배경. 다른 장소의 디자인 및 데이터에는 영향 없음. */
+body.room-teachers{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-teachers::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+background-size:auto,64px 64px,64px 64px,auto}
+body.room-teachers::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-teachers header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-teachers .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+body.room-teachers .mark{position:relative;font-size:0;overflow:hidden}
+body.room-teachers .mark::before,body.room-teachers .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-teachers .mark::before{inset:10px 16px 10px 9px}
+body.room-teachers .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-teachers .brand{color:#b8c8d2}
+body.room-teachers main{position:relative;z-index:1;padding-top:58px}
+body.room-teachers .back{color:#d3e3ed;margin-bottom:34px}
+body.room-teachers .back:hover{color:#ff7687}
+body.room-teachers .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-teachers .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-teachers h1,body.room-teachers .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-teachers .lead{color:#b7cbd8}
+body.room-teachers .room-info{margin-top:16px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;color:#a8bfcc;font-size:13px;letter-spacing:-.015em}
+body.room-teachers .room-info strong{font-weight:740;color:#f0f7fb}
+body.room-teachers .room-info .sep{opacity:.42}
+body.room-teachers .a-overview{margin-top:27px;min-height:240px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,435px);background:rgba(10,33,49,.60);border:1px solid rgba(154,192,216,.20);box-shadow:0 14px 38px rgba(0,0,0,.12);overflow:hidden;isolation:isolate}
+body.room-teachers .a-overview-copy{padding:31px 35px;display:flex;flex-direction:column;justify-content:center;gap:13px}
+body.room-teachers .a-overview .overline{font-size:11px;color:#8fb8d1;letter-spacing:.14em;font-weight:700}
+body.room-teachers .a-overview h2{font-size:25px;margin:0;font-weight:750;letter-spacing:-.06em;color:#eef6fb}
+body.room-teachers .a-overview p{font-size:14px;line-height:1.9;color:#c1d2dc;margin:0;max-width:53ch;word-break:keep-all}
+body.room-teachers .a-overview-visual{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(ellipse at center,rgba(111,166,201,.10),transparent 66%)}
+body.room-teachers .a-overview-visual img{width:100%;max-width:450px;height:207px;object-fit:contain;display:block}
+body.room-teachers .a-overview-visual figcaption{position:absolute;bottom:10px;right:20px;font-size:11px;color:#adc4d2;background:rgba(8,29,44,.88);padding:5px 9px;border:1px solid rgba(169,203,222,.22)}
+body.room-teachers .a-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:36px 0 17px;border-bottom:1px solid rgba(177,205,220,.18);padding-bottom:14px}
+body.room-teachers .a-section-heading h2{font-size:21px;font-weight:760;letter-spacing:-.05em;margin:0;color:#edf5fa}
+body.room-teachers .a-section-heading span{font-size:13px;color:#b4c7d3}
+body.room-teachers .grid{margin-top:0;gap:14px}
+body.room-teachers .card{background:#fff;color:#15222b;border:1px solid #dce2e4;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;transition:border-color .2s,box-shadow .2s;min-height:249px}
+body.room-teachers .card:hover{border-color:#92aebe;box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-teachers .thumb{height:162px;background:linear-gradient(140deg,#fafaf9,#eef1f2);padding:10px;overflow:hidden}
+body.room-teachers .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-teachers .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-teachers .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-teachers .a-data-note{margin:28px 0 0;color:#a9bfcd;font-size:12px;line-height:1.8;letter-spacing:-.01em}
+body.room-teachers .notice{background:#102b3c;color:#d7e5ed;border-left:3px solid #7194ab}
+body.room-teachers .empty{color:#b8c9d6}
+body.room-teachers .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:900px){body.room-teachers .a-overview{grid-template-columns:minmax(0,1fr) minmax(220px,36%)}}
+@media(max-width:800px){body.room-teachers .a-overview{grid-template-columns:1fr}body.room-teachers .a-overview-copy{padding:25px 28px 14px}body.room-teachers .a-overview-visual{min-height:175px}body.room-teachers .a-overview-visual img{height:200px}}
+@media(max-width:520px){body.room-teachers main{padding-top:27px}body.room-teachers .back{margin-bottom:22px}body.room-teachers .dash{margin-bottom:21px}body.room-teachers .hero{padding-bottom:22px}body.room-teachers .lead{font-size:13px;line-height:1.55}body.room-teachers .room-info{margin-top:12px}body.room-teachers .a-overview{margin-top:22px}body.room-teachers .a-overview-copy{padding:21px 21px 10px}body.room-teachers .a-overview h2{font-size:21px}body.room-teachers .a-overview p{font-size:13px}body.room-teachers .a-overview-visual img{height:170px}body.room-teachers .a-overview-visual figcaption{font-size:10px;right:9px}body.room-teachers .a-section-heading{margin-top:30px}body.room-teachers .a-section-heading h2{font-size:19px}body.room-teachers .grid{gap:10px}body.room-teachers .card{padding:6px 6px 12px;min-height:212px}body.room-teachers .thumb{height:124px;padding:6px}body.room-teachers .thumb img{max-height:114px}body.room-teachers .title{margin:12px 4px 4px;font-size:13px;min-height:37px}body.room-teachers .count{margin:2px 4px 0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.room-teachers .card{transition:none}}
+
+/* A-specific elements suppressed in existing non-A room pages */
+.a-overview,.a-section-heading,.room-info,.a-data-note{display:none}
+body.room-teachers .a-overview{display:grid}body.room-teachers .a-section-heading{display:flex}body.room-teachers .room-info{display:flex}body.room-teachers .a-data-note{display:block}
+
+/* A훈련실 검토: 불필요한 안내와 등록목록 헤더 삭제에 따른 카드 간격만 정리 */
+body.room-teachers .grid{margin-top:25px}
+
+/* A훈련실 검토 2: 제목 – 조감도 – 101점, 한 줄 재배치. 나머지 공간은 변경 없음. */
+body.room-teachers .hero{display:grid;grid-template-columns:minmax(200px,1fr) minmax(270px,445px) minmax(125px,1fr);align-items:center;gap:22px;padding:4px 0 26px}
+body.room-teachers .hero>div:first-child{min-width:0;grid-column:1}
+body.room-teachers .hero>.a-overview-visual{grid-column:2;display:flex;justify-content:center;align-items:center;width:100%;height:220px;margin:0;min-width:0;background:none}
+body.room-teachers .hero>.a-overview-visual img{width:100%;height:215px;max-width:445px;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.20))}
+body.room-teachers .hero>.num{grid-column:3;justify-self:end;align-self:center}
+body.room-teachers .grid{margin-top:29px}
+@media(max-width:950px){
+ body.room-teachers .hero{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding-bottom:23px}
+ body.room-teachers .hero>.a-overview-visual{height:195px;max-width:480px;align-self:center}
+ body.room-teachers .hero>.a-overview-visual img{height:190px;width:100%}
+ body.room-teachers .hero>.num{align-self:flex-end;text-align:right}
+}
+@media(max-width:520px){
+ body.room-teachers .hero{gap:8px;padding-bottom:20px}
+ body.room-teachers .hero>.a-overview-visual{height:170px}
+ body.room-teachers .hero>.a-overview-visual img{height:168px}
+ body.room-teachers .hero>.num{font-size:34px}
+ body.room-teachers .grid{margin-top:20px}
+}
+
+
+
+body.room-teachers .hero>.a-overview-visual img{max-height:245px;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-teachers .hero>.a-overview-visual img{max-height:190px}}
+
+body.room-teachers .hero>.a-overview-visual img{height:200px;max-height:200px;width:auto;max-width:100%;object-fit:contain}
+@media(max-width:700px){body.room-teachers .hero>.a-overview-visual img{height:165px;max-height:165px}}
+
+/* 4층 강사대기실 전용 조감도 미확보: 공간 상단에는 이미지 없이 명칭과 물품 수만 표시 */
+@media(min-width:951px){
+  body.room-teachers .hero{grid-template-columns:minmax(0,1fr) max-content}
+  body.room-teachers .hero>.num{grid-column:2}
+}
+
+
+
+/* ICTC 승인 색상(2그룹 1번): 공간별 모든 물품 카드의 색상만 적용 */
+body[class*="room-"] .card {
+  background: #E8EDEF;
+  border-color: #D4DEE2;
+}
+body[class*="room-"] .thumb {
+  background: linear-gradient(135deg, #E8ECEE 0%, #DEE5E8 100%);
+}
+body[class*="room-"] .card:hover { border-color: #BAC8CF; }
+
+
+/* 통제실: 승인된 다른 공간과 동일한 네이비 배경 및 물품 카드 표현. 공간 데이터/구성은 그대로 유지 */
+body.room-control{background:#081d2c;color:#eaf3f8;position:relative;min-height:100vh;overflow-x:hidden}
+body.room-control::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+ background:radial-gradient(65% 46% at 50% 22%,rgba(114,157,190,.20) 0%,rgba(114,157,190,.09) 26%,rgba(8,29,44,0) 58%),
+ linear-gradient(rgba(139,181,206,.085) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(139,181,206,.055) 1px,transparent 1px),
+ linear-gradient(180deg,#102031 0%,#0a1b29 45%,#081d2c 100%);
+ background-size:auto,64px 64px,64px 64px,auto}
+body.room-control::after{content:"";position:fixed;bottom:0;left:50%;width:min(92vw,1260px);height:min(34vw,320px);transform:translateX(-50%);z-index:0;pointer-events:none;background:url('assets/index_floor_sheen.png') center bottom/contain no-repeat;opacity:.52}
+body.room-control header{position:relative;z-index:2;background:rgba(7,25,38,.82);border-bottom:1px solid rgba(177,205,220,.22);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+body.room-control .mark{background:linear-gradient(180deg,#16374c,#102537);border:1px solid rgba(201,224,238,.22);box-shadow:0 8px 18px rgba(0,0,0,.18);position:relative;font-size:0;overflow:hidden}
+body.room-control .mark::before,body.room-control .mark::after{content:"";position:absolute;border:2px solid #d8e7ed;transform:skew(-12deg)}
+body.room-control .mark::before{inset:10px 16px 10px 9px}
+body.room-control .mark::after{inset:13px 10px 9px 16px;border-color:#a9c0cb}
+body.room-control .brand{color:#b8c8d2}
+body.room-control main{position:relative;z-index:1;padding-top:58px}
+body.room-control .back{color:#d3e3ed;margin-bottom:34px}
+body.room-control .back:hover{color:#ff7687}
+body.room-control .dash{box-shadow:0 0 24px rgba(232,63,84,.22);margin-bottom:27px}
+body.room-control .hero{border-bottom:1px solid rgba(177,205,220,.22);padding-bottom:35px}
+body.room-control h1,body.room-control .num{color:#edf5fa;text-shadow:0 2px 16px rgba(0,0,0,.2)}
+body.room-control .lead{color:#b7cbd8}
+body.room-control .grid{margin-top:29px;gap:14px}
+body.room-control .card{color:#15222b;box-shadow:0 12px 28px rgba(0,0,0,.14);padding:8px 8px 17px;min-height:249px}
+body.room-control .card:hover{box-shadow:0 16px 34px rgba(0,0,0,.19)}
+body.room-control .thumb{height:162px;padding:10px;overflow:hidden}
+body.room-control .thumb img{display:block;max-width:100%;max-height:145px;object-fit:contain}
+body.room-control .title{font-size:16px;line-height:1.4;letter-spacing:-.04em;margin:15px 8px 4px;min-height:43px;color:#1a2b35;font-weight:760}
+body.room-control .count{font-size:14px;margin:3px 8px 0;color:#607481;font-weight:600}
+body.room-control .empty{color:#b8c9d6}
+body.room-control .card:focus-visible{outline:3px solid #ed5062;outline-offset:3px}
+@media(max-width:520px){
+ body.room-control main{padding-top:27px}
+ body.room-control .back{margin-bottom:22px}
+ body.room-control .hero{padding-bottom:22px}
+ body.room-control .lead{font-size:13px;line-height:1.55}
+ body.room-control .grid{gap:10px;margin-top:20px}
+ body.room-control .card{padding:6px 6px 12px;min-height:212px}
+ body.room-control .thumb{height:124px;padding:6px}
+ body.room-control .thumb img{max-height:114px}
+ body.room-control .title{margin:12px 4px 4px;font-size:13px;min-height:37px}
+ body.room-control .count{margin:2px 4px 0;font-size:12px}
+}
+
+/* 2026-10-17: 물품별 현황 승인 2그룹 1번 카드의 품명·수량 구조로 공간별 목록 통일.
+   5열/모바일 2열, 물품사진 크기, 물품자료, 링크 및 공간별 레이아웃은 기존 유지. */
+body[class*="room-"] .card {
+  display:flex;
+  flex-direction:column;
+  box-sizing:border-box;
+  padding:6px 6px 0;
+  min-height:249px;
+  background:#E8EDEF;
+  border:1px solid #D4DEE2;
+  overflow:hidden;
+}
+body[class*="room-"] .card > .thumb {
+  flex:0 0 auto;
+  height:162px;
+  margin:0;
+  background:linear-gradient(135deg,#E8ECEE 0%,#DEE5E8 100%);
+}
+body[class*="room-"] .card > .card-meta {
+  display:flex;
+  flex:1 0 auto;
+  min-height:75px;
+  align-items:center;
+  justify-content:space-between;
+  gap:7px;
+  margin:0 -6px;
+  padding:9px 11px;
+  background:linear-gradient(180deg,#D8DFE3 0%,#CFD8DC 100%);
+}
+body[class*="room-"] .card > .card-meta > .title {
+  flex:1 1 auto;
+  min-width:0;
+  min-height:0;
+  margin:0;
+  font-size:15px;
+  line-height:1.35;
+  font-weight:780;
+  letter-spacing:-.045em;
+  color:#18272E;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+body[class*="room-"] .card > .card-meta > .count {
+  flex:0 0 auto;
+  margin:0;
+  font-size:16px;
+  line-height:1.2;
+  font-weight:760;
+  letter-spacing:-.04em;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+  color:#172931;
+}
+body[class*="room-"] .card:hover { border-color:#BAC8CF; }
+@media(max-width:520px) {
+  body[class*="room-"] .card { min-height:212px; padding:6px 6px 0; }
+  body[class*="room-"] .card > .thumb { height:124px; padding:6px; }
+  body[class*="room-"] .card > .thumb img { max-height:114px; }
+  body[class*="room-"] .card > .card-meta { min-height:76px; gap:4px; padding:7px 7px; }
+  body[class*="room-"] .card > .card-meta > .title { font-size:12px; line-height:1.3; }
+  body[class*="room-"] .card > .card-meta > .count { font-size:13px; }
+}
+
+
+
+/* 2026-10-17 승인: 공간별 물품 카드의 한 줄 품명·말줄임·수량 단위 분리.
+   승인된 물품별 현황의 작은 점 단위, 44px 명칭 띠, 사진면/레이아웃/기록은 유지. */
+body[class*="room-"] .card {
+  min-height:214px;
+  padding:6px 6px 0;
+}
+body[class*="room-"] .card > .card-meta {
+  flex:0 0 44px;
+  height:44px;
+  min-height:44px;
+  padding:0 9px;
+  gap:6px;
+  overflow:hidden;
+}
+body[class*="room-"] .card > .card-meta > .title {
+  flex:1 1 auto;
+  min-width:0;
+  width:0;
+  margin:0;
+  font-size:15px;
+  line-height:1.25;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+body[class*="room-"] .card > .card-meta > .count {
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:baseline;
+  gap:1px;
+  margin:0;
+  color:#172931;
+  font-size:16px;
+  font-weight:760;
+  line-height:1.1;
+  white-space:nowrap;
+}
+body[class*="room-"] .card > .card-meta > .count > .unit {
+  font-size:11px;
+  font-weight:500;
+  color:#7b8588;
+  letter-spacing:0;
+}
+@media(max-width:520px) {
+  body[class*="room-"] .card { min-height:176px; padding:6px 6px 0; }
+  body[class*="room-"] .card > .card-meta { height:44px; min-height:44px; flex-basis:44px; padding:0 7px; gap:4px; }
+  body[class*="room-"] .card > .card-meta > .title { font-size:14px; }
+  body[class*="room-"] .card > .card-meta > .count { font-size:15px; }
+  body[class*="room-"] .card > .card-meta > .count > .unit { font-size:11px; }
+}
+
+
+/* 최종 공개본: 승인된 상단 압축 디자인을 13개 공간에 일관되게 적용 */
+body[class*="room-"] header{height:60px;padding-left:max(28px,calc((100vw - 1440px)/2));padding-right:max(28px,calc((100vw - 1440px)/2))}
+body[class*="room-"] .mark{width:32px;height:32px}
+body[class*="room-"] main{padding-top:19px}
+body[class*="room-"] .back{font-size:13px;margin-bottom:13px}
+body[class*="room-"] .dash{width:36px;height:3px;margin-bottom:11px}
+body[class*="room-"] h1{font-size:clamp(29px,3.3vw,47px);line-height:1.16;overflow-wrap:anywhere}
+body[class*="room-"] .num{font-size:39px}
+body[class*="room-"] .hero{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 0 13px}
+body[class*="room-"] .hero:has(> .a-overview-visual){display:grid;grid-template-columns:minmax(180px,1fr) minmax(230px,340px) minmax(110px,.45fr);align-items:center;gap:16px}
+body[class*="room-"] .hero>.a-overview-visual{height:155px;max-width:340px;min-width:0;width:100%;margin:0}
+body[class*="room-"] .hero>.a-overview-visual img{width:100%;height:149px;max-width:340px;max-height:149px;object-fit:contain}
+body[class*="room-"] .hero>.num{align-self:center;justify-self:end}
+body[class*="room-"] .grid{margin-top:17px}
+body[class*="room-"] .a-section-heading{margin-top:16px}
+body[class*="room-"] .lead{font-size:13px;margin-top:6px}
+body[class*="room-"] .room-info{margin-top:8px}
+body[class*="room-"] .notice{margin-top:12px}
+@media(max-width:950px){
+ body[class*="room-"] header{height:60px;padding:0 23px}
+ body[class*="room-"] main{padding-top:20px}
+ body[class*="room-"] .back{margin-bottom:13px}
+ body[class*="room-"] .dash{width:36px;height:3px;margin-bottom:10px}
+ body[class*="room-"] h1{font-size:37px}
+ body[class*="room-"] .num{font-size:31px}
+ body[class*="room-"] .hero{display:flex;align-items:center;flex-direction:row;gap:13px;padding-bottom:15px}
+ body[class*="room-"] .hero:has(> .a-overview-visual){display:grid;grid-template-columns:minmax(120px,1fr) minmax(160px,240px) auto;align-items:center;gap:8px 13px}
+ body[class*="room-"] .hero:has(> .a-overview-visual)>div:first-child{grid-column:1;grid-row:1;min-width:0}
+ body[class*="room-"] .hero>.a-overview-visual{grid-column:2;grid-row:1;justify-self:center;width:100%;height:125px;max-width:240px}
+ body[class*="room-"] .hero>.a-overview-visual img{height:123px;max-height:123px;max-width:240px}
+ body[class*="room-"] .hero:has(> .a-overview-visual)>.num{grid-column:3;grid-row:1;align-self:center;justify-self:end}
+ body[class*="room-"] .grid{margin-top:16px}
+}
+@media(max-width:520px){
+ body[class*="room-"] header{height:57px;padding:0 17px}
+ body[class*="room-"] .brand{font-size:11px}
+ body[class*="room-"] .mark{height:33px;width:33px}
+ body[class*="room-"] main{padding-top:16px}
+ body[class*="room-"] .back{font-size:12px;margin-bottom:11px}
+ body[class*="room-"] .dash{margin-bottom:9px}
+ body[class*="room-"] h1{font-size:clamp(23px,6.7vw,31px);line-height:1.23}
+ body[class*="room-"] .num{font-size:28px}
+ body[class*="room-"] .hero{gap:8px;padding-bottom:13px}
+ body[class*="room-"] .hero:has(> .a-overview-visual){grid-template-columns:minmax(0,1fr) auto;gap:8px}
+ body[class*="room-"] .hero:has(> .a-overview-visual)>div:first-child{grid-column:1;grid-row:1}
+ body[class*="room-"] .hero:has(> .a-overview-visual)>.num{grid-column:2;grid-row:1;align-self:center}
+ body[class*="room-"] .hero>.a-overview-visual{grid-column:1/-1;grid-row:2;justify-self:center;width:100%;height:112px;max-width:290px}
+ body[class*="room-"] .hero>.a-overview-visual img{height:110px;max-height:110px;max-width:290px}
+ body[class*="room-"] .grid{margin-top:14px}
+}
+/* 승인 조감도 이미지는 유지하고 클릭 시 원본만 확대 */
+body[class*="room-"] .hero>.a-overview-visual[role="button"]{cursor:zoom-in}
+body[class*="room-"] .hero>.a-overview-visual:focus-visible{outline:2px solid #e83f54;outline-offset:3px}
+.ictc-overview-dialog{border:1px solid #799bad;background:#081d2c;box-shadow:0 24px 90px #000a;padding:38px 18px 16px;width:min(94vw,960px);max-height:90vh;color:#edf5fa;position:fixed}
+.ictc-overview-dialog::backdrop{background:rgba(2,10,16,.79)}
+.ictc-overview-dialog img{display:block;max-height:75vh;width:100%;object-fit:contain}
+.ictc-overview-close{position:absolute;right:9px;top:8px;background:none;border:1px solid #698b9e;color:#edf5fa;padding:4px 10px;cursor:pointer}
+
+</style></head><body><header><a href="index.html" class="mark" aria-label="홈으로">⌂</a><span class="brand">부산 ICTC · 소방청 국가자산</span></header><main><a class="back" href="공간별_현황.html">← 공간별 현황</a><div class="dash"></div><div class="hero"><div><h1 id="title"></h1><p class="lead">해당 장소로 명확히 기록된 개체의 물품별 현황</p><p class="room-info" id="roominfo"><span>원장 장소 <strong>A 훈련실</strong></span><span class="sep">│</span><span>소방청 국가자산</span></p></div><div class="num" id="total"></div></div>
+<section class="a-overview" aria-label="A훈련실 조감도"><figure class="a-overview-visual"><img src="assets/공간/combo.png" alt="A·B훈련실과 통제실의 통합 조감도" loading="eager"></figure></section>
+<div class="a-section-heading"><h2>등록 물품 목록</h2><span id="groupcount"></span></div>
+<div id="notice"></div><div class="grid" id="grid"></div><p class="a-data-note">※ 수량은 기존 웹사이트의 공간별 원장 분류를 기준으로 표시하며, 별도 현장 실사를 완료했다는 뜻은 아닙니다.</p><div class="empty" id="empty" hidden></div></main>
+<script id="room-data" type="application/json">{"eval":{"name":"4층 평가관실","places":["4층 평가관실"],"photo":"eval.png","groups":[{"name":"마이크","href":"4층 평가관실_마이크_개체현황.html","photo":"assets/대표사진/마이크.png","count":6},{"name":"평가관용 의자","href":"4층 평가관실_평가관용 의자_개체현황.html","photo":"assets/대표사진/평가관용의자.png","count":5},{"name":"평가관용 책상","href":"4층 평가관실_평가관용 책상_개체현황.html","photo":"assets/대표사진/평가관용책상.png","count":4},{"name":"수강용탁자","href":"4층 평가관실_수강용탁자_개체현황.html","photo":"assets/대표사진/수강용탁자.png","count":3},{"name":"대형 액정모니터","href":"4층 평가관실_대형 액정모니터_개체현황.html","photo":"assets/대표사진/훈련생모니터.png","count":2},{"name":"스피커","href":"4층 평가관실_스피커_개체현황.html","photo":"assets/대표사진/스피커.png","count":2},{"name":"접이식 의자","href":"4층 평가관실_접이식 의자_개체현황.html","photo":"assets/대표사진/접이식의자.png","count":2},{"name":"행정용 모니터","href":"4층 평가관실_행정용 모니터_개체현황.html","photo":"assets/대표사진/컴퓨터 모니터.png","count":2},{"name":"EQ Rack","href":"4층 평가관실_EQ Rack_개체현황.html","photo":"assets/대표사진/EQ Rack.png","count":1},{"name":"PC(워크스테이션)","href":"4층 평가관실_PC(워크스테이션)_개체현황.html","photo":"assets/대표사진/컴퓨터 본체.png","count":1},{"name":"단장용 테이블","href":"4층 평가관실_단장용 테이블_개체현황.html","photo":"assets/대표사진/단장용테이블MTPA 24.png","count":1},{"name":"행정용(업무용) 책상","href":"4층 평가관실_행정용(업무용) 책상_개체현황.html","photo":"assets/대표사진/행정용(업무용)책상.png","count":1}],"count":30},"emerg":{"name":"4층 강의실","places":["4층 강의실"],"photo":"emerg.png","groups":[{"name":"접이식 의자","photo":"assets/대표사진/접이식의자.png","count":27,"href":"4층 강의실_접이식 의자_개체현황.html"},{"name":"수강용탁자","photo":"assets/대표사진/수강용탁자.png","count":12,"href":"4층 강의실_수강용탁자_개체현황.html"},{"name":"회의실 테이블","photo":"assets/대표사진/mtpa32.png","count":3,"href":"4층 강의실_회의실 테이블_개체현황.html"},{"name":"스텐드 테이블(강연대)","photo":"assets/대표사진/스탠드강연대SLT.png","count":1,"href":"4층 강의실_스텐드 테이블(강연대)_개체현황.html"},{"name":"PC(워크스테이션)","photo":"assets/대표사진/컴퓨터 본체.png","count":1,"href":"4층 강의실_PC(워크스테이션)_개체현황.html"},{"name":"오디오믹서","photo":"assets/대표사진/오디오믹서.png","count":1,"href":"4층 강의실_오디오믹서_개체현황.html"},{"name":"전자교탁","photo":"assets/대표사진/전자교탁.png","count":1,"href":"4층 강의실_전자교탁_개체현황.html"},{"name":"전자칠판","photo":"assets/대표사진/전자칠판.png","count":1,"href":"4층 강의실_전자칠판_개체현황.html"},{"name":"홈시어터","photo":"assets/대표사진/홈스테레오시스템.png","count":1,"href":"4층 강의실_홈시어터_개체현황.html"},{"name":"단장용 테이블","photo":"assets/대표사진/단장용테이블MTPA 24.png","count":1,"href":"4층 강의실_단장용 테이블_개체현황.html"}],"count":49,"caption_mapping_review":"공간별 위치도 명칭 긴급구조통제단실과 개체원장 4층 강의실의 대응관계 확인 필요"},"rack":{"name":"시스템관리실","places":["시스템관리실"],"photo":"rack.png","note":"원장에 별도 기재된 “시스템관리실 계통”(XVR 23점)은 물리적 배치 수량에 합산하지 않았습니다.","groups":[{"name":"PC(워크스테이션)","href":"시스템관리실_PC(워크스테이션)_개체현황.html","photo":"assets/대표사진/컴퓨터 본체.png","count":17},{"name":"시스템관리실 랙","href":"시스템관리실_시스템관리실 랙_개체현황.html","photo":"assets/대표사진/시스템관리실 랙.png","count":5},{"name":"영상 MATRIX","href":"시스템관리실_영상 MATRIX_개체현황.html","photo":"assets/대표사진/매트릭스.png","count":3},{"name":"KVM 스위치","href":"시스템관리실_KVM 스위치_개체현황.html","photo":"assets/대표사진/KVM_스위치.png","count":2},{"name":"네트워크 스위치","href":"시스템관리실_네트워크 스위치_개체현황.html","photo":"assets/대표사진/네트워크스위치.png","count":2},{"name":"냉난방기","href":"시스템관리실_냉난방기_개체현황.html","photo":"assets/대표사진/냉난방기.png","count":1},{"name":"통합 영상제어 서버(MCS)","href":"시스템관리실_통합 영상제어 서버(MCS)_개체현황.html","photo":"assets/대표사진/통합영상제어서버_MCS.png","count":1}],"count":31},"office":{"name":"사무실","places":["사무실"],"photo":"office.png","groups":[{"name":"접이식 의자","photo":"assets/대표사진/접이식의자.png","count":6,"href":"사무실_접이식 의자_개체현황.html"},{"name":"PC(워크스테이션)","photo":"assets/대표사진/컴퓨터 본체.png","count":3,"href":"사무실_PC(워크스테이션)_개체현황.html"},{"name":"스텐드 테이블(강연대)","photo":"assets/대표사진/스탠드강연대SLT.png","count":1,"href":"사무실_스텐드 테이블(강연대)_개체현황.html"},{"name":"작업용의자","photo":"assets/대표사진/훈련통제석의자.png","count":1,"href":"사무실_작업용의자_개체현황.html"},{"name":"전자칠판","photo":"assets/대표사진/전자칠판.png","count":1,"href":"사무실_전자칠판_개체현황.html"},{"name":"테이블(연결형)","photo":"assets/대표사진/테이블(연결형).png","count":1,"href":"사무실_테이블(연결형)_개체현황.html"}],"count":13},"debrief":{"name":"디브리핑실","places":["1층 디브리핑실"],"photo":"debrief.png","groups":[{"name":"대형 액정모니터","photo":"assets/대표사진/훈련생모니터.png","count":2,"href":"디브리핑실_대형 액정모니터_개체현황.html"},{"name":"PC(워크스테이션)","photo":"assets/대표사진/컴퓨터 본체.png","count":1,"href":"디브리핑실_PC(워크스테이션)_개체현황.html"},{"name":"컴퓨터 운용 책상","photo":"assets/대표사진/컴퓨터책상TC-CD06.png","count":1,"href":"디브리핑실_컴퓨터 운용 책상_개체현황.html"}],"count":4},"a":{"name":"A훈련실","places":["A 훈련실"],"photo":"combo.png","groups":[{"name":"디지털 무전기","href":"A훈련실_무전기_개체현황.html","photo":"assets/대표사진/무전기.png","count":20},{"name":"수강용탁자","href":"A훈련실_수강용탁자_개체현황.html","photo":"assets/대표사진/수강용탁자.png","count":12},{"name":"접이식 의자","href":"A훈련실_접이식 의자_개체현황.html","photo":"assets/대표사진/접이식의자.png","count":12},{"name":"강연대(훈련부스 테이블)","href":"A훈련실_강연대(훈련부스 테이블)_개체현황.html","photo":"assets/대표사진/강연대QEL.png","count":10},{"name":"조이스틱","href":"A훈련실_조이스틱_개체현황.html","photo":"assets/대표사진/조이스틱.png","count":10},{"name":"홈시어터","href":"A훈련실_홈시어터_개체현황.html","photo":"assets/대표사진/홈스테레오시스템.png","count":10},{"name":"대형 액정모니터","href":"A훈련실_대형 액정모니터_개체현황.html","photo":"assets/대표사진/훈련생모니터.png","count":9},{"name":"이동식부스(훈련부스)","href":"A훈련실_이동식부스(훈련부스)_개체현황.html","photo":"assets/대표사진/이동식부스.png","count":9},{"name":"소파","href":"A훈련실_소파_개체현황.html","photo":"assets/대표사진/소파.png","count":3},{"name":"강연대(발표대)","href":"A훈련실_강연대(발표대)_개체현황.html","photo":"assets/대표사진/발표대ERT.png","count":2},{"name":"마이크","href":"A훈련실_마이크_개체현황.html","photo":"assets/대표사진/마이크.png","count":1},{"name":"전자칠판","href":"A훈련실_전자칠판_개체현황.html","photo":"assets/대표사진/전자칠판.png","count":1},{"name":"지휘관 모니터(DID)","href":"A훈련실_지휘관 모니터(DID)_개체현황.html","photo":"assets/대표사진/DID대형모니터.png","count":1},{"name":"카메라","href":"A훈련실_카메라_개체현황.html","photo":"assets/대표사진/카메라.png","count":1}],"count":101},"b":{"name":"B훈련실","places":["B 훈련실"],"photo":"combo.png","groups":[{"name":"디지털 무전기","href":"B훈련실_디지털 무전기_개체현황.html","photo":"assets/대표사진/무전기.png","count":20},{"name":"수강용탁자","href":"B훈련실_수강용탁자_개체현황.html","photo":"assets/대표사진/수강용탁자.png","count":12},{"name":"접이식 의자","href":"B훈련실_접이식 의자_개체현황.html","photo":"assets/대표사진/접이식의자.png","count":11},{"name":"강연대(훈련부스 테이블)","href":"B훈련실_강연대(훈련부스 테이블)_개체현황.html","photo":"assets/대표사진/강연대QEL.png","count":10},{"name":"조이스틱","href":"B훈련실_조이스틱_개체현황.html","photo":"assets/대표사진/조이스틱.png","count":10},{"name":"홈시어터","href":"B훈련실_홈시어터_개체현황.html","photo":"assets/대표사진/홈스테레오시스템.png","count":10},{"name":"대형 액정모니터","href":"B훈련실_대형 액정모니터_개체현황.html","photo":"assets/대표사진/훈련생모니터.png","count":9},{"name":"이동식부스(훈련부스)","href":"B훈련실_이동식부스(훈련부스)_개체현황.html","photo":"assets/대표사진/이동식부스.png","count":9},{"name":"소파","href":"B훈련실_소파_개체현황.html","photo":"assets/대표사진/소파.png","count":3},{"name":"강연대(발표대)","href":"B훈련실_강연대(발표대)_개체현황.html","photo":"assets/대표사진/발표대ERT.png","count":2},{"name":"마이크","href":"B훈련실_마이크_개체현황.html","photo":"assets/대표사진/마이크.png","count":1},{"name":"전자칠판","href":"B훈련실_전자칠판_개체현황.html","photo":"assets/대표사진/전자칠판.png","count":1},{"name":"지휘관 모니터(DID)","href":"B훈련실_지휘관 모니터(DID)_개체현황.html","photo":"assets/대표사진/DID대형모니터.png","count":1},{"name":"카메라","href":"B훈련실_카메라_개체현황.html","photo":"assets/대표사진/카메라.png","count":1},{"name":"테이블(연결형)","href":"B훈련실_테이블(연결형)_개체현황.html","photo":"assets/대표사진/테이블(연결형).png","count":1}],"count":101},"control":{"name":"통제실","places":["통제실"],"photo":"control_room.png","groups":[{"name":"행정용 모니터","href":"통제실_행정용 모니터_개체현황.html","photo":"assets/대표사진/컴퓨터 모니터.png","count":9},{"name":"PC(워크스테이션)","href":"통제실_PC(워크스테이션)_개체현황.html","photo":"assets/대표사진/컴퓨터 본체.png","count":4},{"name":"작업용의자","href":"통제실_작업용의자_개체현황.html","photo":"assets/대표사진/훈련통제석의자.png","count":3},{"name":"마이크","href":"통제실_마이크_개체현황.html","photo":"assets/대표사진/마이크.png","count":2},{"name":"스피커","href":"통제실_스피커_개체현황.html","photo":"assets/대표사진/스피커.png","count":2},{"name":"이동식부스(훈련부스)","href":"통제실_이동식부스(훈련부스)_개체현황.html","photo":"assets/대표사진/control_booth2.jpg","count":2},{"name":"카운터","href":"통제실_카운터_개체현황.html","photo":"assets/대표사진/카운터.png","count":2},{"name":"소파","href":"통제실_소파_개체현황.html","photo":"assets/대표사진/소파.png","count":1},{"name":"수강용탁자","href":"통제실_수강용탁자_개체현황.html","photo":"assets/대표사진/수강용탁자.png","count":1}],"count":26},"pool":{"name":"수영장","places":["별관수영장"],"photo":"","groups":[{"name":"소파","photo":"assets/대표사진/소파.png","count":1,"href":"수영장_소파_개체현황.html"}],"count":1},"main":{"name":"1층 본관동","places":["본관동 1층"],"groups":[{"name":"카운터","href":"1층 본관동_카운터_개체현황.html","photo":"assets/대표사진/카운터.png","count":1}],"count":1},"teachers":{"name":"4층 강사대기실","places":["4층 평가관실 내 강사대기실"],"groups":[{"name":"테이블(연결형)","photo":"assets/대표사진/테이블(연결형).png","count":1,"href":"4층 강사대기실_테이블(연결형)_개체현황.html"}],"count":1,"ledger_place":"4층 평가관실 내 강사대기실"},"fire":{"name":"2층 전술관(소방시설)","places":["2층 보관"],"groups":[{"name":"전자칠판","href":"2층 전술관(소방시설)_전자칠판_개체현황.html","photo":"assets/대표사진/전자칠판.png","count":1}],"count":1,"ledger_place":"2층 보관"},"storage":{"name":"1층 전술관(화재창고)","places":["전술관 1층 화재장비창고"],"groups":[{"name":"테이블(연결형)","href":"1층 전술관(화재창고)_테이블(연결형)_개체현황.html","photo":"assets/대표사진/테이블(연결형).png","count":1}],"count":1,"ledger_place":"전술관 1층 화재장비창고"}}</script>
+<script>
+const rooms=JSON.parse(document.getElementById('room-data').textContent);const key=new URLSearchParams(location.search).get('room');const room=rooms[key];if(key==='control'){
+  document.body.classList.add('room-control');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  const figure=overview.querySelector('.a-overview-visual');
+  const img=figure.querySelector('img');
+  img.src='assets/공간/control_room.png';
+  img.alt='통제실 공간 대표 이미지';
+  const hero=document.querySelector('.hero');
+  hero.insertBefore(figure,document.getElementById('total'));
+  overview.remove();
+}
+if(key==='a'){
+  document.body.classList.add('room-a');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  const figure=overview.querySelector('.a-overview-visual');
+  const hero=document.querySelector('.hero');
+  hero.insertBefore(figure,document.getElementById('total'));
+  overview.remove();
+}
+if(key==='b'){
+  document.body.classList.add('room-b');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  const figure=overview.querySelector('.a-overview-visual');
+  overview.setAttribute('aria-label','B훈련실 조감도');
+  const hero=document.querySelector('.hero');
+  hero.insertBefore(figure,document.getElementById('total'));
+  overview.remove();
+}
+if(key==='rack'){
+  document.body.classList.add('room-rack');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  const figure=overview.querySelector('.a-overview-visual');
+  const im=figure.querySelector('img');im.src='assets/공간/rack.png';im.alt='시스템관리실 서버 랙 대표 이미지';
+  overview.setAttribute('aria-label','시스템관리실 대표 이미지');
+  const hero=document.querySelector('.hero');
+  hero.insertBefore(figure,document.getElementById('total'));
+  overview.remove();
+
+  /* 승인된 실물 7종 목록 아래에 XVR 소프트웨어 23EA를 별도 추가 */
+  const physicalGrid=document.getElementById('grid');
+  const hardwareTitle=document.createElement('h2');
+  hardwareTitle.className='rack-section-title';
+  hardwareTitle.innerHTML='하드웨어 · 실물 장비 <span>7종 · 31점</span>';
+  physicalGrid.parentNode.insertBefore(hardwareTitle,physicalGrid);
+  const sw=document.createElement('section');sw.className='rack-software';
+  sw.setAttribute('aria-label','XVR 소프트웨어');
+  sw.innerHTML=`<h2 class="rack-section-title">소프트웨어 · XVR <span>실물 31점과 별도</span></h2>
+  <a class="rack-xvr-card" href="시스템관리실_XVR_소프트웨어_개체현황.html" aria-label="XVR 시뮬레이션 시스템 소프트웨어 23EA 상세보기">
+    <span class="rack-xvr-symbol"><img src="assets/대표사진/XVR_라이선스인증서_원본.png" alt="XVR 2023 라이선스 인증서 대표사진" loading="lazy"></span>
+    <span><span class="rack-xvr-name">XVR 시뮬레이션 시스템</span><span class="rack-xvr-sub" style="display:block">플랫폼 1EA · 라이선스 20EA · 추가 2EA</span></span>
+    <span class="rack-xvr-count">23EA</span><span class="rack-xvr-chevron" aria-hidden="true">›</span>
+  </a>`;
+  physicalGrid.insertAdjacentElement('afterend',sw);
+}
+if(key==='eval'){
+  document.body.classList.add('room-eval');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  const figure=overview.querySelector('.a-overview-visual');
+  const im=figure.querySelector('img');im.src='assets/공간/eval.png';im.alt='4층 평가관실 조감도';
+  const hero=document.querySelector('.hero');
+  hero.insertBefore(figure,document.getElementById('total'));
+  overview.remove();
+}
+if(key==='emerg'){
+  document.body.classList.add('room-lecture');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  const figure=overview.querySelector('.a-overview-visual');
+  const im=figure.querySelector('img');im.src='assets/공간/emerg.png';im.alt='4층 강의실 참고 조감도 (위치도: 긴급구조통제단실)';
+  const hero=document.querySelector('.hero');
+  hero.insertBefore(figure,document.getElementById('total'));
+  overview.remove();
+}
+if(key==='debrief'){
+  document.body.classList.add('room-debrief');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  const figure=overview.querySelector('.a-overview-visual');
+  const im=figure.querySelector('img');im.src='assets/공간/debrief.png';im.alt='1층 디브리핑실 조감도';
+  const hero=document.querySelector('.hero');
+  hero.insertBefore(figure,document.getElementById('total'));
+  overview.remove();
+}
+if(key==='office'){
+  document.body.classList.add('room-office');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  const figure=overview.querySelector('.a-overview-visual');
+  const im=figure.querySelector('img');im.src='assets/공간/office.png';im.alt='사무실 조감도';
+  const hero=document.querySelector('.hero');
+  hero.insertBefore(figure,document.getElementById('total'));
+  overview.remove();
+}
+if(key==='teachers'){
+  document.body.classList.add('room-teachers');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  // 강사대기실은 확인된 공간 조감도가 없으므로 상단 대표사진을 사용하지 않음.
+  const overview=document.querySelector('.a-overview');
+  if(overview) overview.remove();
+}
+if(key==='main'){
+  document.body.classList.add('room-main');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  // 본관동 1층 공간 조감도 없음. 대표 카운터 이미지는 공간 상단에 표시하지 않는다.
+  document.querySelector('.a-overview').remove();
+}
+if(key==='fire'){
+  // 사용자가 2026-10-17 임시명칭 ‘2층 보관’=‘2층 전술관(소방시설)’ 확정. 공간 이미지 없음.
+  document.body.classList.add('room-pool');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  if(overview) overview.remove();
+}
+if(key==='storage'){
+  // 1층 전술관(화재창고): 확인된 공간 대표 이미지 없음. 물품 대표사진은 카드에만 표시.
+  document.body.classList.add('room-pool');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  const overview=document.querySelector('.a-overview');
+  if(overview) overview.remove();
+}
+if(key==='pool'){
+  document.body.classList.add('room-pool');
+  document.querySelectorAll('.lead,.room-info,.a-section-heading,.a-data-note').forEach(el=>el.remove());
+  // 수영장 전용 공간 이미지가 없으므로 상단 대표 이미지를 두지 않음.
+  // 소파 물품 카드와 개체별 상세페이지는 변경하지 않음.
+  document.querySelector('.a-overview').remove();
+}const title=document.getElementById('title');const grid=document.getElementById('grid');const note=document.getElementById('notice');const empty=document.getElementById('empty');
+if(!room){title.textContent='공간을 찾을 수 없습니다';document.getElementById('total').textContent='—';empty.hidden=false;empty.textContent='공간별 현황에서 다시 선택해 주세요.'}
+else{document.title=room.name+' · 부산 ICTC';title.textContent=room.name;document.getElementById('total').textContent=room.count===0&&room.note?'확인 필요':room.count+'점';if(room.note&&key!=='rack'&&key!=='eval'&&key!=='emerg'&&key!=='debrief'&&key!=='office'&&key!=='pool'&&key!=='main'&&key!=='teachers'){let box=document.createElement('div');box.className='notice';box.textContent=room.note;note.append(box)}if(room.groups.length===0){empty.hidden=false;empty.textContent=key==='fire'?'등록 장소를 확인한 뒤 물품별 개체현황을 연결할 예정입니다.':'현재 승인된 개체정보에서 해당 장소에 직접 일치하는 물품을 확인하지 못했습니다. 다른 장소의 물품을 임의 배치하지 않았습니다.'}
+for(const item of room.groups){const a=document.createElement('a');a.className='card';a.href=item.href;const p=document.createElement('div');p.className='thumb';const im=document.createElement('img');im.loading='lazy';im.src=item.photo;im.alt=item.name+' 대표사진';p.append(im);const t=document.createElement('span');t.className='title';t.textContent=item.name;t.title=item.name;a.title=item.name;const c=document.createElement('span');c.className='count';c.append(document.createTextNode(String(item.count)));const unit=document.createElement('span');unit.className='unit';unit.textContent='점';c.append(unit);const meta=document.createElement('div');meta.className='card-meta';meta.append(t,c);a.append(p,meta);grid.append(a)}}
+</script>
+<script>
+/* 공간 조감도는 원본을 변경하지 않고 확대 기능만 제공 */
+(()=>{
+ const figure=document.querySelector('.hero .a-overview-visual');
+ if(!figure||!figure.querySelector('img'))return;
+ figure.setAttribute('role','button');figure.setAttribute('tabindex','0');
+ figure.setAttribute('aria-label',(document.getElementById('title').textContent||'공간')+' 조감도 확대 보기');
+ const dialog=document.createElement('dialog');dialog.className='ictc-overview-dialog';
+ const close=document.createElement('button');close.type='button';close.className='ictc-overview-close';close.textContent='닫기 ×';close.setAttribute('aria-label','확대 이미지 닫기');
+ const im=document.createElement('img');im.src=figure.querySelector('img').src;im.alt=figure.querySelector('img').alt;
+ dialog.append(close,im);document.body.append(dialog);
+ const open=()=>{if(!dialog.open)dialog.showModal()};
+ figure.addEventListener('click',open);
+ figure.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();open()}});
+ close.addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',ev=>{if(ev.target===dialog)dialog.close()});
+})();
+</script>
+</body></html>

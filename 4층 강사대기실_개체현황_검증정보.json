@@ -1,0 +1,19 @@
+{
+  "room": "4층 강사대기실",
+  "ledger_place": "4층 평가관실 내 강사대기실",
+  "item_type": "테이블(연결형)",
+  "count": 1,
+  "id": "ICTC-0349",
+  "management": "KKR-PA-24235081-00000008",
+  "model": "덕영가구공업사 DYCB83S-ZA, 1000×600×720",
+  "spec": "덕영가구공업사 DYCB83S-ZA, 1000×600×720",
+  "price": 415000,
+  "purchase_date": "2023-11-21",
+  "tag": "태그확인(관리번호중복)",
+  "status": "정상사용",
+  "note": "동일 KKR이 다른 실물(전술관 1층 화재장비창고)에도 부착 — 별도 개체, 하단 자산번호·위치로 구분",
+  "room_photo": null,
+  "product_photo": "assets/대표사진/테이블(연결형).png",
+  "source_file": "부산 ICTC 소방청 국가자산 물품 신태선관리용(20261015).xlsx",
+  "source_sheet": "개체별 물품정보"
+}

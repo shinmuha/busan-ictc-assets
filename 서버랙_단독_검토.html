@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#091c29">
+<title>부산 ICTC 공간별 현황 - 서버랙 접지감 검토</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --navy-top:#071721;
+    --navy-mid:#0a1e2a;
+    --navy-floor:#081924;
+    --floor-gloss-strength: 1;
+    --grid-strength:.64;
+  }
+  *{box-sizing:border-box}
+  html{background:#071720;min-height:100%}
+  body{margin:0;min-height:100vh;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;background:#071720}
+  .backdrop{
+    position:relative;width:min(100%,1672px);margin:0 auto;
+    aspect-ratio:1672/941;isolation:isolate;overflow:hidden;
+    background:
+      radial-gradient(ellipse 52% 49% at 61% 8%,rgba(41,77,100,.27),transparent 85%),
+      radial-gradient(ellipse 54% 42% at 43% 34%,rgba(40,74,98,.11),transparent 83%),
+      radial-gradient(ellipse 54% 75% at 85% 65%,rgba(17,44,61,.17),transparent 95%),
+      linear-gradient(117deg,#071721 0%,#091b26 32%,#102332 59%,#071620 100%);
+  }
+  /* Scene-wide atmospheric contour — NOT a separate light source under each item. */
+  .atmosphere{position:absolute;inset:0;z-index:0;pointer-events:none;background:
+    radial-gradient(ellipse 49% 40% at 53% 8%,rgba(54,95,116,.11),transparent 85%),
+    radial-gradient(ellipse 68% 52% at 48% 74%,rgba(29,65,87,.07),transparent 92%);
+  }
+  /* A continuous navy-polished plane sits BEHIND all future transparent room models. */
+  .floor{position:absolute;z-index:1;left:0;right:0;top:34%;bottom:0;pointer-events:none;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.24) 22%,#000 65%);
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.24) 22%,#000 65%);
+    background:
+      radial-gradient(ellipse 77% 58% at 63% 73%,rgba(110,157,181,.055) 0%,rgba(55,96,119,.041) 37%,transparent 87%),
+      radial-gradient(ellipse 75% 54% at 22% 84%,rgba(80,124,147,.043) 0%,transparent 91%),
+      linear-gradient(180deg,transparent 0%,rgba(13,34,49,.080) 36%,rgba(46,81,102,.040) 73%,rgba(16,43,60,.089) 100%);
+  }
+  /* Genuine low-angle highlights sampled from the approved index's floor, softened and spread as one plane. */
+  .floor-sheen{position:absolute;z-index:2;inset:49% 0 0;pointer-events:none;opacity:calc(.22 * var(--floor-gloss-strength));
+    background-image:url("assets/index_floor_sheen.png");
+    background-size:82% 85%;background-position:65% 100%;background-repeat:no-repeat;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.3) 22%,#000 70%,rgba(0,0,0,.85));
+    mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.3) 22%,#000 70%,rgba(0,0,0,.85));
+  }
+  /* Low, broad grazing reflection across the surface, rather than circular light halos. */
+  .floor-varnish{position:absolute;z-index:2;left:-7%;right:-7%;top:48%;bottom:-12%;pointer-events:none;
+    background:
+      radial-gradient(ellipse 83% 17% at 54% 65%,rgba(167,196,209,.037),transparent 86%),
+      radial-gradient(ellipse 52% 8% at 73% 91%,rgba(169,194,211,.023),transparent 88%),
+      linear-gradient(88deg,transparent 5%,rgba(131,170,195,.016) 26%,transparent 46%,rgba(151,190,211,.024) 67%,transparent 91%);
+    filter:blur(23px);opacity:calc(.92 * var(--floor-gloss-strength));
+  }
+  .index-grid{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:var(--grid-strength);
+    background-image:
+      linear-gradient(90deg,rgba(111,162,184,.085) 1px,transparent 1px),
+      linear-gradient(0deg,rgba(111,162,184,.075) 1px,transparent 1px);
+    background-size:331px 100%,100% 110px;
+    background-position:-17px 0,0 16px;
+  }
+  .arcs{position:absolute;z-index:3;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:.58}
+  .diagonal-pattern{position:absolute;z-index:3;pointer-events:none;left:-12%;top:48%;width:49%;height:52%;opacity:.075;
+    background:repeating-linear-gradient(147deg,transparent 0 6px,rgba(132,174,196,.56) 6.5px,transparent 7px 12px);
+    transform:skewY(-8deg);-webkit-mask-image:linear-gradient(95deg,transparent 0%,black 40%,transparent 100%);
+    mask-image:linear-gradient(95deg,transparent 0%,black 40%,transparent 100%);
+  }
+  /* Nothing else is rendered in phase one: no room images, labels, controls, or invented reflections. */
+  @media(max-width:700px){.backdrop{aspect-ratio:auto;min-height:100vh}.index-grid{background-size:200px 100%,100% 95px}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* Phase 2: THE ABOVE background CSS is the approved Phase-1 original, untouched. */
+  .backdrop{container-type:inline-size;color:#f2f5f8;font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;-webkit-font-smoothing:antialiased;}
+  .backdrop a{color:inherit;text-decoration:none;}
+  .object{position:absolute;z-index:7;isolation:isolate;}
+  .object>img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 5px 7px rgba(0,8,17,.16));pointer-events:none;user-select:none;}
+  .object a.object-link{position:absolute;inset:0;z-index:8;border-radius:5px;}
+  .object a.object-link:hover{background:rgba(205,231,243,.012);}
+  .object a.object-link:focus-visible,.tag:focus-visible,.home:focus-visible,.locations a:focus-visible,.zones a:focus-visible{outline:3px solid #ef4b60;outline-offset:3px;}
+  .object.eval{left:27.8%;top:9.5%;width:23.7%;height:33.2%;}
+  .object.emerg{left:50.2%;top:8.7%;width:30.3%;height:35.5%;}
+  .object.rack{left:39.7%;top:35.3%;width:14.3%;height:28.4%;}
+  .object.office{left:15.1%;top:57.4%;width:24.2%;height:37.4%;}
+  .object.debrief{left:38.7%;top:63.9%;width:22.3%;height:31.2%;}
+  .object.train{left:57.2%;top:40.6%;width:41.6%;height:53.7%;}
+  .brand{position:absolute;z-index:12;left:3.35%;top:3.5%;font-size:1.52cqw;line-height:1.13;font-weight:460;letter-spacing:-.045em;white-space:nowrap;}
+  .brand strong{color:#ee4058;font-weight:570;}
+  .brand small{display:block;margin-top:.5cqw;font-size:.91cqw;color:#becbd4;font-weight:390;}
+  .heading{position:absolute;z-index:12;left:3.4%;top:12.65%;margin:0;font-size:4.75cqw;line-height:1.12;letter-spacing:-.085em;font-weight:850;white-space:nowrap;color:#f8f9fa;}
+  .heading::before{display:block;content:"";width:3.36cqw;height:.32cqw;margin:0 0 1.15cqw;background:#fa445b;}
+  .heading::after{display:block;position:absolute;content:"";height:1px;width:88%;left:0;bottom:-.5cqw;background:linear-gradient(90deg,transparent,rgba(139,207,231,.53),transparent);}
+  .home{position:absolute;z-index:30;right:3.3%;top:2.45%;width:3.3%;aspect-ratio:1;display:grid;place-items:center;border:1px solid rgba(180,221,243,.85);border-radius:.48cqw;background:rgba(8,32,51,.41);}
+  .home svg{width:53%;height:53%;fill:#f9fbfd;}
+  .home .home-word{position:absolute;top:calc(100% + .45cqw);font-size:.88cqw;color:#b8c9d4;white-space:nowrap;}
+  .home:hover{background:rgba(28,65,84,.65);}
+  .locations{position:absolute;z-index:20;left:3.43%;top:28.25%;width:16.8%;display:flex;flex-direction:column;gap:.64cqw;}
+  .locations a{position:relative;min-height:3.43cqw;display:flex;align-items:center;justify-content:space-between;gap:.4cqw;padding:.5cqw 1.05cqw;border:1px solid rgba(100,163,205,.58);border-radius:.42cqw;background:linear-gradient(98deg,rgba(6,29,48,.70),rgba(13,40,61,.43));font-weight:570;font-size:1.21cqw;line-height:1.25;white-space:nowrap;}
+  .locations svg{width:1.1cqw;height:1.1cqw;flex:none;opacity:.85;}
+  .locations a:hover{background:rgba(31,68,91,.7);border-color:rgba(183,226,245,.83);}
+  .tag{position:absolute;z-index:20;display:inline-flex;align-items:center;gap:1.23cqw;padding:.52cqw .86cqw .56cqw;border:1px solid rgba(111,184,226,.7);border-radius:.42cqw;background:linear-gradient(100deg,rgba(7,27,43,.94),rgba(14,47,70,.79));font-size:1.34cqw;font-weight:700;line-height:1.2;white-space:nowrap;letter-spacing:-.065em;}
+  .tag svg{width:1.25cqw;height:1.25cqw;flex:none;opacity:.88;}
+  .tag:hover{background:rgba(31,74,100,.92);border-color:#afddf3;}
+  .t-eval{left:27.8%;top:10.2%;}.t-emerg{left:67.4%;top:9.6%;}.t-rack{left:48.0%;top:34.1%;}.t-office{left:7.4%;top:68.5%;}.t-debrief{left:39.4%;top:64.0%;}.t-control{left:76.0%;top:38.0%;}.t-a{left:66.9%;top:81.9%;}.t-b{left:87.7%;top:81.4%;}
+  .zones{position:absolute;inset:0;z-index:9;}
+  .zones a{position:absolute;border-radius:4px;display:block;font-size:0;}
+  .zones .ctrl{left:7%;top:3%;width:45%;height:19%;}.zones .a{left:6%;top:30%;width:45%;height:63%;}.zones .b{right:2%;top:20%;width:44%;height:68%;}
+  .zones a:hover{background:rgba(116,184,222,.03);}
+  .pin{position:absolute;z-index:15;width:1.12cqw;height:1.12cqw;border:1.5px solid #d6efff;border-radius:50%;background:#78bde8;box-shadow:0 0 0 .24cqw rgba(54,132,185,.23),0 0 5px rgba(188,225,244,.45);pointer-events:none;}
+  .pin::before{content:"";position:absolute;inset:24%;border-radius:50%;background:#eefaff;}
+  .pin::after{content:"";position:absolute;left:50%;top:100%;height:7.7cqw;width:1px;background:linear-gradient(#c5e9ff,rgba(128,180,208,.35));transform:translateX(-50%);}
+  .pin.control{left:78.4%;top:49.9%;}.pin.control::after{top:auto;bottom:100%;height:8.3cqw;}.pin.a{left:68.4%;top:71.9%;}.pin.b{left:88.7%;top:67.8%;}
+  .mobile-name{display:none;}
+  @media(max-width:1050px){
+    .backdrop{aspect-ratio:auto;min-height:100vh;overflow:hidden;padding:28px 26px 68px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 20px;align-content:start;}
+    .brand,.heading,.home,.locations,.object,.tag{position:relative!important;left:auto!important;top:auto!important;right:auto!important;width:auto!important;height:auto!important;}
+    .brand{grid-column:1/-1;font-size:23px;}.brand small{font-size:13px;margin-top:7px;}
+    .home{position:absolute!important;right:27px!important;top:29px!important;width:47px!important;height:47px!important;border-radius:7px;}
+    .home .home-word{font-size:11px;top:calc(100% + 7px);}
+    .heading{grid-column:1/-1;margin:49px 0 20px;font-size:clamp(40px,6vw,68px);}
+    .heading::before{width:51px;height:5px;margin-bottom:17px;}.heading::after{display:none;}
+    .locations{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0 0 20px;}
+    .locations a{font-size:clamp(13px,1.9vw,17px);min-height:48px;padding:10px 14px;border-radius:6px;}
+    .locations svg{width:16px;height:16px;}
+    .object{min-width:0;aspect-ratio:1.57;display:grid;place-items:center;}
+    .object.rack{aspect-ratio:1.65;}.object.rack>img{width:63%;}
+    .object.train{grid-column:1/-1;aspect-ratio:1.56;}
+    .object .mobile-name{position:absolute;display:inline-flex;z-index:14;left:8px;bottom:0;padding:8px 12px;background:rgba(6,27,42,.87);border:1px solid rgba(114,178,212,.65);border-radius:5px;font-size:15px;font-weight:680;}
+    .object.train .mobile-name{display:none;}
+    .tag,.pin{display:none!important;}
+    .zones a{font-size:clamp(12px,2vw,17px);font-weight:660;background:rgba(7,30,47,.9);border:1px solid rgba(125,194,227,.73);padding:10px 14px;display:inline-flex;align-items:center;width:auto!important;height:auto!important;}
+    .zones .ctrl{top:0;left:27%;}.zones .a{top:auto;left:16%;bottom:0;}.zones .b{top:auto;right:2%;bottom:0;}
+  }
+  @media(max-width:600px){
+    .backdrop{grid-template-columns:1fr;gap:12px;padding:25px 17px 55px;}
+    .brand{font-size:21px;}.brand small{font-size:12px;}
+    .home{width:43px!important;height:43px!important;right:17px!important;top:25px!important;}
+    .heading{font-size:44px;margin:38px 0 14px;}
+    .locations{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}
+    .locations a{font-size:12px;padding:9px;min-height:49px;white-space:normal;}
+    .locations svg{width:14px;}
+    .object{aspect-ratio:1.5;}.object.rack{aspect-ratio:1.25;}.object.train{grid-column:1;aspect-ratio:1.33;}
+    .object .mobile-name{font-size:14px;}
+    .zones a{font-size:13px;padding:7px 9px;}
+  }
+
+</style>
+</head>
+<body>
+ <main class="backdrop" aria-label="부산 ICTC 공간별 현황 디자인 2단계 검토">
+   <div class="atmosphere" aria-hidden="true"></div>
+   <div class="floor" aria-hidden="true"></div>
+   <div class="floor-sheen" aria-hidden="true"></div>
+   <div class="floor-varnish" aria-hidden="true"></div>
+   <div class="index-grid" aria-hidden="true"></div>
+   <svg class="arcs" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle cx="1355" cy="438" r="282" fill="none" stroke="#81b0c7" stroke-opacity=".22" stroke-width="1.0"/>
+      <circle cx="1355" cy="438" r="226" fill="none" stroke="#81b0c7" stroke-opacity=".16" stroke-width="1.0"/>
+   </svg>
+   <div class="diagonal-pattern" aria-hidden="true"></div>
+<div class="object rack"><img src="assets/공간/rack.png" alt="시스템관리실 서버 랙"></div>
+ </main>
+</body>
+</html>

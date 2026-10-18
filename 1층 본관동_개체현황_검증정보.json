@@ -1,0 +1,22 @@
+{
+  "room": "1층 본관동",
+  "ledger_location": "본관동 1층",
+  "count": 1,
+  "groups": [
+    {
+      "name": "카운터",
+      "count": 1,
+      "href": "1층 본관동_카운터_개체현황.html"
+    }
+  ],
+  "object_id": "ICTC-0300",
+  "management_number": "KKR-PA-24152812-00000008",
+  "item_model": "탑인포코리아 TOP-049",
+  "management_number_duplicate_note": "동일 KKR이 다른 실물(통제실)에도 부착 — 별도 개체, 하단 자산번호·위치로 구분",
+  "space_overview_image": null,
+  "item_representative_photo": "assets/대표사진/카운터.png",
+  "photo_note": "대표사진은 본관동 현장 실물 촬영본으로 확인되지 않음",
+  "source_file": "부산 ICTC 소방청 국가자산 물품 신태선관리용(20261015).xlsx",
+  "source_sheet": "개체별 물품정보",
+  "source_location_field": "현재 위치"
+}

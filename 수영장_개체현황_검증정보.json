@@ -1,0 +1,17 @@
+{
+  "room": "수영장",
+  "ledger_location": "별관수영장",
+  "groups": [
+    {
+      "name": "소파",
+      "count": 1,
+      "href": "수영장_소파_개체현황.html"
+    }
+  ],
+  "count": 1,
+  "verified_member": "ICTC-0110",
+  "management": "KKR-PA-24986142-00000008",
+  "note_as_entered": "4939",
+  "representative_photo_not_verified_as_actual": true,
+  "procurement_price_crosscheck_required": true
+}

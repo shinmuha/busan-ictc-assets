@@ -1,0 +1,4 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>ICTC 조회 연결</title><script>
+var v=new URLSearchParams(location.hash.slice(1)).get('view');
+location.replace(v==='items'?'물품별.html':v==='spaces'?'공간별_현황.html':'index.html');
+</script></head><body><a href="index.html">부산 ICTC 홈</a></body></html>

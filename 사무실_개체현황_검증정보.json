@@ -1,0 +1,84 @@
+{
+  "room": "사무실",
+  "place_in_ledger": "사무실",
+  "types": 6,
+  "items": 13,
+  "reference": "부산 ICTC 소방청 국가자산 물품 신태선관리용(20261015).xlsx",
+  "groups": [
+    {
+      "name": "접이식 의자",
+      "count": 6,
+      "href": "사무실_접이식 의자_개체현황.html"
+    },
+    {
+      "name": "PC(워크스테이션)",
+      "count": 3,
+      "href": "사무실_PC(워크스테이션)_개체현황.html"
+    },
+    {
+      "name": "스텐드 테이블(강연대)",
+      "count": 1,
+      "href": "사무실_스텐드 테이블(강연대)_개체현황.html"
+    },
+    {
+      "name": "작업용의자",
+      "count": 1,
+      "href": "사무실_작업용의자_개체현황.html"
+    },
+    {
+      "name": "전자칠판",
+      "count": 1,
+      "href": "사무실_전자칠판_개체현황.html"
+    },
+    {
+      "name": "테이블(연결형)",
+      "count": 1,
+      "href": "사무실_테이블(연결형)_개체현황.html"
+    }
+  ],
+  "non_text_raw_notes": [
+    {
+      "id": "ICTC-0290",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0291",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0292",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0293",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0294",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0295",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0035",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0234",
+      "note": "4939"
+    },
+    {
+      "id": "ICTC-0351",
+      "note": "4939"
+    }
+  ],
+  "noted_records": [
+    "ICTC-0071",
+    "ICTC-0072",
+    "ICTC-0073",
+    "ICTC-0223"
+  ],
+  "missing_dates": []
+}

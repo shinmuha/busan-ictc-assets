@@ -1,0 +1,73 @@
+{
+  "room": "시스템관리실",
+  "types": 7,
+  "items": 31,
+  "reference": "부산 ICTC 소방청 국가자산 물품 신태선관리용(20261015).xlsx",
+  "groups": [
+    {
+      "name": "PC(워크스테이션)",
+      "count": 17,
+      "href": "시스템관리실_PC(워크스테이션)_개체현황.html"
+    },
+    {
+      "name": "시스템관리실 랙",
+      "count": 5,
+      "href": "시스템관리실_시스템관리실 랙_개체현황.html"
+    },
+    {
+      "name": "영상 MATRIX",
+      "count": 3,
+      "href": "시스템관리실_영상 MATRIX_개체현황.html"
+    },
+    {
+      "name": "KVM 스위치",
+      "count": 2,
+      "href": "시스템관리실_KVM 스위치_개체현황.html"
+    },
+    {
+      "name": "네트워크 스위치",
+      "count": 2,
+      "href": "시스템관리실_네트워크 스위치_개체현황.html"
+    },
+    {
+      "name": "냉난방기",
+      "count": 1,
+      "href": "시스템관리실_냉난방기_개체현황.html"
+    },
+    {
+      "name": "통합 영상제어 서버(MCS)",
+      "count": 1,
+      "href": "시스템관리실_통합 영상제어 서버(MCS)_개체현황.html"
+    }
+  ],
+  "noted_records": [
+    "ICTC-0074",
+    "ICTC-0075",
+    "ICTC-0076",
+    "ICTC-0077",
+    "ICTC-0078",
+    "ICTC-0079",
+    "ICTC-0080",
+    "ICTC-0081",
+    "ICTC-0082",
+    "ICTC-0083",
+    "ICTC-0084",
+    "ICTC-0085",
+    "ICTC-0086",
+    "ICTC-0087",
+    "ICTC-0088",
+    "ICTC-0089",
+    "ICTC-0090",
+    "ICTC-0063",
+    "ICTC-0064",
+    "ICTC-0067",
+    "ICTC-0105",
+    "ICTC-0106",
+    "ICTC-0107",
+    "ICTC-0012",
+    "ICTC-0013",
+    "ICTC-0061",
+    "ICTC-0062",
+    "ICTC-0361"
+  ]
+}
