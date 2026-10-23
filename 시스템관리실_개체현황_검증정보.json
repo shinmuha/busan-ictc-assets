@@ -1,12 +1,12 @@
 {
   "room": "시스템관리실",
   "types": 7,
-  "items": 31,
+  "items": 34,
   "reference": "부산 ICTC 소방청 국가자산 물품 신태선관리용(20261015).xlsx",
   "groups": [
     {
       "name": "PC(워크스테이션)",
-      "count": 17,
+      "count": 20,
       "href": "시스템관리실_PC(워크스테이션)_개체현황.html"
     },
     {
@@ -41,6 +41,9 @@
     }
   ],
   "noted_records": [
+    "ICTC-0071",
+    "ICTC-0072",
+    "ICTC-0073",
     "ICTC-0074",
     "ICTC-0075",
     "ICTC-0076",
